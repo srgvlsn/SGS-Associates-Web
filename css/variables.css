@@ -1,0 +1,71 @@
+/* ==========================================================================
+   SGS ASSOCIATES - DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+
+:root {
+  /* Brand Palette (Derived from SGS Associates official branding) */
+  --color-green: #00D06C;
+  --color-green-light: #2ee28e;
+  --color-green-dark: #009e52;
+  --color-green-rgb: 0, 208, 108;
+  --color-green-glow: rgba(var(--color-green-rgb), 0.25);
+
+  --color-purple: #7940EC;
+  --color-purple-light: #9764ff;
+  --color-purple-dark: #5824c9;
+  --color-purple-rgb: 121, 64, 236;
+  --color-purple-glow: rgba(var(--color-purple-rgb), 0.25);
+
+  --gradient-brand: linear-gradient(135deg, var(--color-purple) 0%, #4f25b5 50%, #009e52 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-purple) 0%, var(--color-green) 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --gradient-hero-glow: radial-gradient(circle at 50% -20%, rgba(121, 64, 236, 0.28) 0%, rgba(0, 208, 108, 0.12) 40%, transparent 70%);
+
+  /* Neutrals & Dark Surfaces */
+  --bg-dark-base: #080B11;
+  --bg-dark-surface: #0E131F;
+  --bg-dark-card: #141B2D;
+  --bg-dark-card-hover: #1B243B;
+  --bg-dark-border: rgba(255, 255, 255, 0.08);
+  --bg-dark-border-hover: rgba(121, 64, 236, 0.4);
+
+  /* Clean Light Mode / Alternating Section Tones */
+  --bg-light-base: #F8FAFC;
+  --bg-light-surface: #FFFFFF;
+  --bg-light-card: #FFFFFF;
+  --bg-light-border: #E2E8F0;
+
+  /* Typography Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --text-on-light: #0F172A;
+  --text-on-light-muted: #475569;
+
+  /* Fonts */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Elevations & Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-purple: 0 0 35px rgba(var(--color-purple-rgb), 0.3);
+  --shadow-glow-green: 0 0 35px rgba(var(--color-green-rgb), 0.3);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --container-max-width: 1240px;
+  --header-height: 80px;
+  --topbar-height: 42px;
+}
