@@ -89,15 +89,95 @@
         <img src="assets/icons/logo.svg" alt="SGS Associates Logo" width="180" height="48">
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#why-us" class="nav-link">Why Choose Us</a>
-        <a href="#compliance-calendar" class="nav-link">Tax Calendar</a>
-        <a href="#careers" class="nav-link">Careers <span style="font-size: 0.72rem; padding: 2px 7px; background: var(--color-purple); color: #fff; border-radius: 99px; margin-left: 4px;">Hiring</span></a>
-        <a href="#branches" class="nav-link">Branches</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <!-- Desktop Navigation Menu with Clean Dropdowns -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active" id="nav-link-home">Home</a>
+
+        <!-- Services & Tools Dropdown -->
+        <div class="nav-dropdown" id="nav-dropdown-services">
+          <a href="#services" class="nav-link nav-dropdown-toggle" id="nav-dropdown-services-toggle">
+            <span>Services &amp; Tools</span>
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#services" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>All 18+ Services</strong>
+                <span>MCA, GST, Audits, PF &amp; Appeals</span>
+              </div>
+            </a>
+            <a href="#tax-toolkit" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Tax &amp; GST Calculators</strong>
+                <span>Live GST Estimator &amp; Regime Comparison</span>
+              </div>
+            </a>
+            <a href="#compliance-navigator" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Compliance Advisor Quiz</strong>
+                <span>3-click checklist for your entity</span>
+              </div>
+            </a>
+            <a href="#compliance-calendar" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Statutory Due Dates</strong>
+                <span>Monthly calendar &amp; live countdown</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- About Firm Dropdown -->
+        <div class="nav-dropdown" id="nav-dropdown-about">
+          <a href="#why-us" class="nav-link nav-dropdown-toggle" id="nav-dropdown-about-toggle">
+            <span>About Firm</span>
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#why-us" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Why Choose Us</strong>
+                <span>4 pillars of professional excellence</span>
+              </div>
+            </a>
+            <a href="#client-stories" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Client Case Stories</strong>
+                <span>Proven ITC recovery &amp; tax restructuring</span>
+              </div>
+            </a>
+            <a href="#branches" class="dropdown-item">
+              <div class="dd-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="dd-text">
+                <strong>Our 5 Branches</strong>
+                <span>North Paravur, Kodungallur, Cherai, Perumbavoor, Kaloor</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="#careers" class="nav-link" id="nav-link-careers">Careers <span class="nav-badge-hiring">Hiring</span></a>
+        <a href="#contact" class="nav-link" id="nav-link-contact">Contact</a>
       </nav>
 
       <!-- Action Button -->
@@ -118,13 +198,25 @@
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
       <img src="assets/icons/logo.svg" alt="SGS Associates" style="height: 38px;">
     </div>
-    <div style="display: flex; flex-direction: column; gap: 14px; font-size: 1.05rem; font-weight: 600;">
-      <a href="#home" class="mobile-drawer-link">Home</a>
-      <a href="#services" class="mobile-drawer-link">Our Services</a>
-      <a href="#why-us" class="mobile-drawer-link">Why Choose Us</a>
-      <a href="#compliance-calendar" class="mobile-drawer-link">Tax Due Dates</a>
-      <a href="#careers" class="mobile-drawer-link">Careers & Traineeship</a>
-      <a href="#branches" class="mobile-drawer-link">Our 5 Branches</a>
+    <div class="mobile-drawer-nav">
+      <a href="#home" class="mobile-drawer-link active">Home</a>
+
+      <div class="mobile-drawer-group">
+        <span class="mobile-drawer-heading">Services &amp; Tools</span>
+        <a href="#services" class="mobile-drawer-link">All 18+ Services</a>
+        <a href="#tax-toolkit" class="mobile-drawer-link">Tax &amp; GST Calculators</a>
+        <a href="#compliance-navigator" class="mobile-drawer-link">Compliance Advisor Quiz</a>
+        <a href="#compliance-calendar" class="mobile-drawer-link">Due Dates &amp; Countdown</a>
+      </div>
+
+      <div class="mobile-drawer-group">
+        <span class="mobile-drawer-heading">About Firm</span>
+        <a href="#why-us" class="mobile-drawer-link">Why Choose Us</a>
+        <a href="#client-stories" class="mobile-drawer-link">Client Success Stories</a>
+        <a href="#branches" class="mobile-drawer-link">Our 5 Branches</a>
+      </div>
+
+      <a href="#careers" class="mobile-drawer-link">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
       <a href="#contact" class="mobile-drawer-link">Contact Us</a>
     </div>
     <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--bg-dark-border);">
@@ -139,6 +231,7 @@
        HERO SECTION
        ======================================================================== -->
   <section id="home" class="hero-section">
+    <canvas id="hero-particles-canvas" class="hero-particles-canvas" aria-hidden="true"></canvas>
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
@@ -156,40 +249,53 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="#contact" class="btn btn-primary">
+            <a href="#tax-toolkit" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/></svg>
+              <span>Try Tax Calculators</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
               <span>Schedule Free Consultation</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="#services" class="btn btn-secondary">
-              <span>Explore All Services</span>
-            </a>
           </div>
 
-          <!-- Trust Badges / Stats -->
+          <!-- Trust Badges / Stats with Dynamic Counter -->
           <div class="hero-stats-row">
             <div class="hero-stat-item">
-              <div class="hero-stat-value">5<span>+</span></div>
+              <div class="hero-stat-value"><span class="counter-val" data-target="5">5</span><span>+</span></div>
               <div class="hero-stat-label">Kerala Branches</div>
             </div>
             <div class="hero-stat-item">
-              <div class="hero-stat-value">18<span>+</span></div>
+              <div class="hero-stat-value"><span class="counter-val" data-target="18">18</span><span>+</span></div>
               <div class="hero-stat-label">Practice Areas</div>
             </div>
             <div class="hero-stat-item">
-              <div class="hero-stat-value">100<span>%</span></div>
+              <div class="hero-stat-value"><span class="counter-val" data-target="100">100</span><span>%</span></div>
               <div class="hero-stat-label">Statutory Compliance</div>
             </div>
             <div class="hero-stat-item">
-              <div class="hero-stat-value">1500<span>+</span></div>
+              <div class="hero-stat-value"><span class="counter-val" data-target="1500">1500</span><span>+</span></div>
               <div class="hero-stat-label">Satisfied Clients</div>
             </div>
           </div>
         </div>
 
-        <!-- Hero Visual Banner Card -->
+        <!-- Hero Visual Banner Card with Interactive Badges -->
         <div class="hero-media-wrapper">
-          <div class="hero-media-card">
+          <div class="hero-media-card interactive-glow-card">
             <img src="assets/images/hero-banner.jpg" alt="SGS Associates Financial and Tax Consultation Banner" loading="eager">
+            
+            <!-- Dynamic Floating Live Badges -->
+            <div class="hero-floating-badge badge-top-right">
+              <span class="pulse-dot"></span>
+              <span>100% Timely Statutory Filings</span>
+            </div>
+
+            <div class="hero-floating-badge badge-bottom-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Next Due: <strong>GSTR-3B (20th)</strong></span>
+            </div>
+
             <div class="hero-floating-glass-card">
               <div class="glass-card-info">
                 <h4>SGS Associates</h4>
@@ -259,19 +365,360 @@
         </p>
       </div>
 
+      <!-- Interactive Real-time Service Search -->
+      <div class="service-search-bar-container">
+        <div class="service-search-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="service-search-input" placeholder="Search practice areas or keywords (e.g., GST, Pvt Ltd, ITR, PF, Loan CMA, Tax Appeal)..." aria-label="Search compliance services">
+          <button id="service-search-clear-btn" class="service-search-clear" style="display: none;" aria-label="Clear search">&times;</button>
+        </div>
+        <div class="service-search-status">
+          <span id="service-count-text">Showing all 18 services</span>
+        </div>
+      </div>
+
       <!-- Filter Buttons -->
       <div class="service-filter-tabs">
         <button class="filter-tab-btn active" data-category="all">All Services</button>
-        <button class="filter-tab-btn" data-category="corporate">Corporate & MCA</button>
-        <button class="filter-tab-btn" data-category="taxation">Taxation & GST</button>
-        <button class="filter-tab-btn" data-category="accounting">Accounting & Audit</button>
-        <button class="filter-tab-btn" data-category="labour">Labour Law & HR</button>
-        <button class="filter-tab-btn" data-category="legal">Legal & Representations</button>
+        <button class="filter-tab-btn" data-category="corporate">Corporate &amp; MCA</button>
+        <button class="filter-tab-btn" data-category="taxation">Taxation &amp; GST</button>
+        <button class="filter-tab-btn" data-category="accounting">Accounting &amp; Audit</button>
+        <button class="filter-tab-btn" data-category="labour">Labour Law &amp; HR</button>
+        <button class="filter-tab-btn" data-category="legal">Legal &amp; Representations</button>
       </div>
 
       <!-- Dynamic Services Grid (Hydrated by js/main.js using js/data.js) -->
       <div id="services-grid-container" class="services-grid">
         <!-- Rendered via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       INTERACTIVE FINANCIAL TOOLKIT (GST & TAX REGIME ESTIMATOR)
+       ======================================================================== -->
+  <section id="tax-toolkit" class="toolkit-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Interactive Financial Toolkit</span>
+        <h2 class="section-title">Instant Tax &amp; GST Calculators</h2>
+        <p class="section-subtitle">
+          Calculate your exact GST liability or simulate your tax savings under the New vs. Old Tax Regime in real-time.
+        </p>
+      </div>
+
+      <div class="toolkit-wrapper">
+        <!-- Toolkit Switcher Tabs -->
+        <div class="toolkit-nav-tabs">
+          <button class="toolkit-tab-btn active" data-tool="gst">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            <span>Smart GST Estimator</span>
+          </button>
+          <button class="toolkit-tab-btn" data-tool="incometax">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+            <span>New vs Old Tax Regime Simulator</span>
+          </button>
+        </div>
+
+        <!-- Tool 1: Smart GST Calculator Container -->
+        <div id="tool-gst-container" class="toolkit-card active interactive-glow-card">
+          <div class="calc-grid">
+            <div class="calc-inputs-col">
+              <div class="calc-type-toggle">
+                <button type="button" class="toggle-pill active" data-gst-type="exclusive">Exclusive of GST (Add GST)</button>
+                <button type="button" class="toggle-pill" data-gst-type="inclusive">Inclusive of GST (Remove GST)</button>
+              </div>
+
+              <div class="form-group" style="margin-top: 20px;">
+                <label class="form-label" for="gst-amount-input">Transaction Amount (₹)</label>
+                <div class="input-prefix-wrapper">
+                  <span class="currency-prefix">₹</span>
+                  <input type="number" id="gst-amount-input" class="form-input form-input-lg" value="50000" min="0" step="1000">
+                </div>
+                <!-- Amount Quick Presets -->
+                <div class="amount-presets">
+                  <button type="button" class="preset-chip" data-amount="10000">₹10,000</button>
+                  <button type="button" class="preset-chip" data-amount="25000">₹25,000</button>
+                  <button type="button" class="preset-chip active" data-amount="50000">₹50,000</button>
+                  <button type="button" class="preset-chip" data-amount="100000">₹1 Lakh</button>
+                  <button type="button" class="preset-chip" data-amount="500000">₹5 Lakhs</button>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 24px;">
+                <label class="form-label">Applicable GST Slab Rate</label>
+                <div class="gst-rate-chips">
+                  <button type="button" class="rate-chip" data-rate="5">5% <span class="rate-sub">Transport / Goods</span></button>
+                  <button type="button" class="rate-chip" data-rate="12">12% <span class="rate-sub">Standard</span></button>
+                  <button type="button" class="rate-chip active" data-rate="18">18% <span class="rate-sub">Services / Regular</span></button>
+                  <button type="button" class="rate-chip" data-rate="28">28% <span class="rate-sub">Luxury / Cement</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- GST Output Display -->
+            <div class="calc-results-col">
+              <div class="results-summary-card">
+                <div class="result-header">
+                  <span class="calc-status-badge">Live Computation</span>
+                  <span id="gst-rate-label" class="calc-rate-badge">18% GST</span>
+                </div>
+
+                <div class="result-breakdown-table">
+                  <div class="breakdown-row">
+                    <span class="row-label">Base Net Amount</span>
+                    <span id="gst-res-net" class="row-value">₹50,000</span>
+                  </div>
+                  <div class="breakdown-row highlight">
+                    <span class="row-label">CGST (<span id="gst-cgst-rate">9</span>%)</span>
+                    <span id="gst-res-cgst" class="row-value">₹4,500</span>
+                  </div>
+                  <div class="breakdown-row highlight">
+                    <span class="row-label">SGST (<span id="gst-sgst-rate">9</span>%)</span>
+                    <span id="gst-res-sgst" class="row-value">₹4,500</span>
+                  </div>
+                  <div class="breakdown-row total-row">
+                    <span class="row-label">Total Invoice Value</span>
+                    <span id="gst-res-total" class="row-value text-green">₹59,000</span>
+                  </div>
+                </div>
+
+                <!-- Visual Ratio Bar -->
+                <div class="ratio-bar-wrapper">
+                  <div class="ratio-bar-labels">
+                    <span>Base (<span id="ratio-base-pct">84.7</span>%)</span>
+                    <span>Total Tax (<span id="ratio-tax-pct">15.3</span>%)</span>
+                  </div>
+                  <div class="ratio-progress-bar">
+                    <div id="ratio-bar-fill-base" class="ratio-fill base" style="width: 84.7%;"></div>
+                    <div id="ratio-bar-fill-tax" class="ratio-fill tax" style="width: 15.3%;"></div>
+                  </div>
+                </div>
+
+                <button type="button" id="gst-transfer-btn" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                  <span>Enquire For GST Filing With This Calculation &rarr;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: Income Tax Regime Simulator Container -->
+        <div id="tool-incometax-container" class="toolkit-card interactive-glow-card" style="display: none;">
+          <div class="calc-grid">
+            <div class="calc-inputs-col">
+              <div class="form-group">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <label class="form-label" for="it-income-slider">Annual Gross Income (₹)</label>
+                  <span id="it-income-display" style="font-weight: 700; color: var(--color-green); font-size: 1.15rem;">₹12,00,000</span>
+                </div>
+                <input type="range" id="it-income-slider" min="300000" max="4000000" step="50000" value="1200000" class="custom-range-slider">
+                <div class="range-limits">
+                  <span>₹3 Lakhs</span>
+                  <span>₹20 Lakhs</span>
+                  <span>₹40 Lakhs</span>
+                </div>
+              </div>
+
+              <!-- Deductions Accordion (For Old Regime) -->
+              <div class="deductions-box">
+                <h5 class="deductions-title">
+                  <span>Deductions Claimed (Under Old Regime)</span>
+                  <span id="total-deductions-badge" class="badge-mini">₹2,50,000</span>
+                </h5>
+                <div class="deductions-grid">
+                  <div class="form-group">
+                    <label class="form-label-sm" for="it-ded-80c">Sec 80C (PPF, ELSS, EPF, LIC - Max 1.5L)</label>
+                    <input type="number" id="it-ded-80c" class="form-input form-input-sm" value="150000" max="150000" step="10000">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-sm" for="it-ded-80d">Sec 80D (Health Insurance)</label>
+                    <input type="number" id="it-ded-80d" class="form-input form-input-sm" value="25000" max="100000" step="5000">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label-sm" for="it-ded-other">Standard Deduction / HRA / Housing Loan</label>
+                    <input type="number" id="it-ded-other" class="form-input form-input-sm" value="75000" step="10000">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tax Comparison Result Column -->
+            <div class="calc-results-col">
+              <div class="results-summary-card">
+                <div class="result-header">
+                  <span class="calc-status-badge">AY 2025-26 Simulation</span>
+                  <span id="it-recommendation-badge" class="calc-rate-badge green">New Regime Recommended</span>
+                </div>
+
+                <div class="regime-comparison-grid">
+                  <div class="regime-card new-regime">
+                    <div class="regime-tag">Default Choice</div>
+                    <h4>New Tax Regime</h4>
+                    <div id="it-tax-new" class="regime-tax-figure">₹85,800</div>
+                    <p class="regime-subtext">₹75k standard deduction, low slab rates, rebate up to ₹7L.</p>
+                  </div>
+
+                  <div class="regime-card old-regime">
+                    <div class="regime-tag muted">With Deductions</div>
+                    <h4>Old Tax Regime</h4>
+                    <div id="it-tax-old" class="regime-tax-figure">₹1,17,000</div>
+                    <p class="regime-subtext">Allows Sec 80C, 80D, HRA & housing loan interest deductions.</p>
+                  </div>
+                </div>
+
+                <div id="it-savings-banner" class="savings-highlight-banner">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <div>
+                    <strong>You save <span id="it-savings-amount">₹31,200</span> under New Regime!</strong>
+                    <p style="font-size: 0.8rem; margin-top: 2px; color: var(--text-secondary);">Includes 4% Health &amp; Education Cess</p>
+                  </div>
+                </div>
+
+                <button type="button" id="it-consult-btn" class="btn btn-primary" style="width: 100%; margin-top: 16px;">
+                  <span>Plan Tax Savings With Our Chartered Accountant &rarr;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SMART COMPLIANCE & ENTITY NAVIGATOR (INTERACTIVE 3-CLICK QUIZ)
+       ======================================================================== -->
+  <section id="compliance-navigator" class="navigator-section">
+    <div class="container">
+      <div class="navigator-card interactive-glow-card">
+        <div class="navigator-header">
+          <span class="section-tag">Interactive Advisor</span>
+          <h2 class="section-title" style="font-size: clamp(1.8rem, 2.8vw, 2.4rem);">Find Your Exact Compliance Roadmap in 10 Seconds</h2>
+          <p class="section-subtitle">
+            Answer 2 quick questions to get an instant checklist of required documents, turnaround time, and recommended filing structure.
+          </p>
+        </div>
+
+        <div class="quiz-stepper-progress">
+          <div class="quiz-step-indicator active" data-step="1">
+            <span class="step-num">1</span>
+            <span class="step-txt">Entity Type</span>
+          </div>
+          <div class="quiz-step-line"></div>
+          <div class="quiz-step-indicator" data-step="2">
+            <span class="step-num">2</span>
+            <span class="step-txt">Primary Goal</span>
+          </div>
+          <div class="quiz-step-line"></div>
+          <div class="quiz-step-indicator" data-step="3">
+            <span class="step-num">3</span>
+            <span class="step-txt">Personalized Roadmap</span>
+          </div>
+        </div>
+
+        <!-- Quiz Step 1 -->
+        <div id="quiz-step-1" class="quiz-step-panel active">
+          <h4 class="quiz-question">Select your business or personal profile:</h4>
+          <div class="quiz-options-grid">
+            <div class="quiz-option-card" data-entity="proprietorship">
+              <div class="q-icon">🏪</div>
+              <h5>Sole Proprietorship / Retail</h5>
+              <p>Single owner, local shops, commercial retailers</p>
+            </div>
+            <div class="quiz-option-card" data-entity="partnership">
+              <div class="q-icon">🤝</div>
+              <h5>Partnership Firm / LLP</h5>
+              <p>2+ partners, professional services, trading</p>
+            </div>
+            <div class="quiz-option-card" data-entity="pvtltd">
+              <div class="q-icon">🏢</div>
+              <h5>Private Limited / Startup</h5>
+              <p>MCA registered corporate entity, scalable venture</p>
+            </div>
+            <div class="quiz-option-card" data-entity="individual">
+              <div class="q-icon">💼</div>
+              <h5>Salaried / Professional</h5>
+              <p>Doctors, IT professionals, salaried executives</p>
+            </div>
+            <div class="quiz-option-card" data-entity="nri">
+              <div class="q-icon">✈️</div>
+              <h5>NRI / Non-Resident</h5>
+              <p>Kerala asset sales, remittance, global income</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Step 2 -->
+        <div id="quiz-step-2" class="quiz-step-panel" style="display: none;">
+          <h4 class="quiz-question">What is your immediate compliance requirement?</h4>
+          <div class="quiz-options-grid">
+            <div class="quiz-option-card" data-goal="incorporation">
+              <div class="q-icon">📝</div>
+              <h5>New Registration / Incorporation</h5>
+              <p>Company incorporation, GST, Trade license</p>
+            </div>
+            <div class="quiz-option-card" data-goal="tax_planning">
+              <div class="q-icon">📊</div>
+              <h5>Income Tax &amp; ITR Filing</h5>
+              <p>Annual tax filing, refund tracking, capital gains</p>
+            </div>
+            <div class="quiz-option-card" data-goal="gst_filing">
+              <div class="q-icon">🧾</div>
+              <h5>GST Returns &amp; Notice Defense</h5>
+              <p>GSTR-1, GSTR-3B, scrutiny notice appeals</p>
+            </div>
+            <div class="quiz-option-card" data-goal="audit_books">
+              <div class="q-icon">⚖️</div>
+              <h5>Tally Bookkeeping &amp; Audit</h5>
+              <p>Monthly accounts, voucher entry, balance sheet</p>
+            </div>
+            <div class="quiz-option-card" data-goal="loan_report">
+              <div class="q-icon">🏦</div>
+              <h5>Bank Loan Project Report</h5>
+              <p>CMA data, projected financials for bank loans</p>
+            </div>
+          </div>
+          <button type="button" id="quiz-back-btn" class="btn btn-secondary btn-sm" style="margin-top: 20px;">&larr; Back to Step 1</button>
+        </div>
+
+        <!-- Quiz Step 3: Result -->
+        <div id="quiz-step-3" class="quiz-step-panel" style="display: none;">
+          <div class="quiz-result-card">
+            <div class="quiz-result-badge">✓ Customized Roadmap Ready</div>
+            <h3 id="quiz-res-service-title" class="quiz-result-title">Company &amp; LLP Registration (MCA SPICe+)</h3>
+            <p id="quiz-res-summary" class="quiz-result-desc">Comprehensive incorporation package with complete statutory onboarding.</p>
+
+            <div class="quiz-meta-row">
+              <div class="quiz-meta-item">
+                <span class="meta-label">Estimated Turnaround:</span>
+                <span id="quiz-res-turnaround" class="meta-val">5 - 7 Business Days</span>
+              </div>
+              <div class="quiz-meta-item">
+                <span class="meta-label">Primary Authority:</span>
+                <span class="meta-val">Ministry of Corporate Affairs (ROC)</span>
+              </div>
+            </div>
+
+            <div class="quiz-checklist-box">
+              <h5>Essential Documents Required:</h5>
+              <ul id="quiz-res-checklist" class="checklist-items">
+                <!-- Hydrated dynamically -->
+              </ul>
+            </div>
+
+            <div class="quiz-action-buttons">
+              <button type="button" id="quiz-action-consult-btn" class="btn btn-primary">
+                <span>Book Free Consultation For This Service</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <button type="button" id="quiz-restart-btn" class="btn btn-secondary">
+                <span>Start Over</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -289,6 +736,29 @@
           </div>
           <a href="#contact" class="btn btn-secondary btn-sm">
             Request Due Date Advisory
+          </a>
+        </div>
+
+        <!-- Live Statutory Countdown Ticker Banner -->
+        <div class="due-countdown-banner">
+          <div class="dcb-info">
+            <span class="pulse-dot"></span>
+            <div>
+              <div class="dcb-tag">Statutory Deadline Tracker</div>
+              <h4 id="next-deadline-title">Upcoming: GSTR-3B Monthly Return (20th)</h4>
+            </div>
+          </div>
+          <div class="dcb-clock">
+            <div class="clock-unit"><span id="clock-days" class="clock-num">00</span><span class="clock-lbl">Days</span></div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit"><span id="clock-hours" class="clock-num">00</span><span class="clock-lbl">Hours</span></div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit"><span id="clock-mins" class="clock-num">00</span><span class="clock-lbl">Mins</span></div>
+            <span class="clock-sep">:</span>
+            <div class="clock-unit"><span id="clock-secs" class="clock-num">00</span><span class="clock-lbl">Secs</span></div>
+          </div>
+          <a href="https://wa.me/919947144568?text=Hello%20SGS%20Associates,%20please%20send%20me%20reminders%20for%20upcoming%20statutory%20tax%20due%20dates" target="_blank" rel="noopener" class="btn btn-sm whatsapp-fast-btn dcb-cta">
+            <span>Set Reminder on WhatsApp</span>
           </a>
         </div>
 
@@ -469,6 +939,31 @@
   </section>
 
   <!-- ========================================================================
+       CLIENT SUCCESS STORIES & ENTERPRISE IMPACT
+       ======================================================================== -->
+  <section id="client-stories" class="stories-section">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-tag">Proven Track Record</span>
+        <h2 class="section-title">Client Success Stories &amp; Tangible Results</h2>
+        <p class="section-subtitle">
+          Discover how our Chartered Accountants and Tax Practitioners solve real-world complex compliance, ITC recovery, and tax structuring challenges across Kerala.
+        </p>
+      </div>
+
+      <div class="stories-showcase interactive-glow-card">
+        <div class="stories-nav-tabs" id="stories-nav-tabs">
+          <!-- Rendered via JavaScript from SGS_DATA.clientStories -->
+        </div>
+
+        <div class="story-detail-display" id="story-detail-display">
+          <!-- Active story details rendered via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
        CONSULTATION BOOKING & INQUIRY FORM
        ======================================================================== -->
   <section id="contact" class="contact-section">
@@ -572,8 +1067,8 @@
             </div>
 
             <div class="form-submit-row">
-              <button type="submit" class="btn btn-primary" style="flex: 1;">
-                Submit Inquiry
+              <button type="submit" id="consultation-submit-btn" class="btn btn-primary" style="flex: 1;">
+                <span>Submit Inquiry</span>
               </button>
               <button type="button" id="whatsapp-direct-btn" class="btn whatsapp-fast-btn" style="flex: 1;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -581,6 +1076,39 @@
               </button>
             </div>
           </form>
+
+          <!-- Dynamic Hybrid Submission Success Card -->
+          <div id="consultation-success-card" class="submission-success-card" style="display: none;">
+            <div class="success-icon-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h4 class="success-heading">Inquiry Received Successfully!</h4>
+            <p class="success-desc">
+              Thank you, <strong id="success-client-name" style="color: #fff;">Client</strong>. Your request regarding <span id="success-service-name" style="color: var(--color-green); font-weight: 600;">Compliance</span> has been automatically recorded and forwarded to our <span id="success-branch-name" style="color: #CBD5E1; font-weight: 600;">Paravur Head Office</span> team.
+            </p>
+
+            <!-- Instant WhatsApp Fast-Track Prompt -->
+            <div class="whatsapp-prompt-box">
+              <div class="wpb-header">
+                <span class="pulse-dot"></span>
+                <strong>Need an immediate response?</strong>
+              </div>
+              <p class="wpb-text">
+                Connect directly with our designated accountant on WhatsApp for quick document reviews, filing quotes, or urgent queries:
+              </p>
+              <a href="#" id="success-whatsapp-btn" target="_blank" class="btn whatsapp-fast-btn wpb-cta-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Continue on WhatsApp Now &rarr;</span>
+              </a>
+            </div>
+
+            <button type="button" id="consultation-reset-btn" class="btn btn-secondary btn-sm" style="margin-top: 16px;">
+              &larr; Submit Another Inquiry
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -656,8 +1184,23 @@
   </footer>
 
   <!-- ========================================================================
-       FLOATING ACTION BAR (WHATSAPP & QUICK CALL)
+       FLOATING QUICK-ACTION ISLAND & BUTTONS
        ======================================================================== -->
+  <aside class="quick-island-dock" aria-label="Quick Action Tools">
+    <a href="#tax-toolkit" class="dock-item" title="Tax &amp; GST Calculators">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/></svg>
+      <span>Calculators</span>
+    </a>
+    <a href="#compliance-calendar" class="dock-item" title="Live Due Date Countdown">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Due Dates</span>
+    </a>
+    <a href="#compliance-navigator" class="dock-item" title="Smart Compliance Advisor">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span>Advisor</span>
+    </a>
+  </aside>
+
   <div class="floating-actions">
     <a href="https://wa.me/919947144568?text=Hello%20SGS%20Associates,%20I%20would%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener" class="floating-btn whatsapp" title="Chat with us on WhatsApp" aria-label="WhatsApp Chat">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -721,10 +1264,38 @@
           <textarea id="applicant-notes" class="form-textarea" placeholder="Mention your computer skills (e.g. Tally, Excel) or interest in tax/audit..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
-          Submit Application via WhatsApp & HR
+        <button type="submit" id="career-submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+          <span>Submit Trainee Application</span>
         </button>
       </form>
+
+      <!-- Career Submission Success Card -->
+      <div id="career-success-card" class="submission-success-card" style="display: none;">
+        <div class="success-icon-badge">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h4 class="success-heading">Application Logged Successfully!</h4>
+        <p class="success-desc">
+          Thank you, <strong id="career-success-name" style="color: #fff;">Applicant</strong>! Your details have been sent to SGS HR and recorded in our recruitment database.
+        </p>
+
+        <div class="whatsapp-prompt-box">
+          <div class="wpb-header">
+            <span class="pulse-dot"></span>
+            <strong>Connect with HR on WhatsApp</strong>
+          </div>
+          <p class="wpb-text">
+            Send your CV / resume directly to our hiring team on WhatsApp for fast-track interview scheduling:
+          </p>
+          <a href="#" id="career-whatsapp-btn" target="_blank" class="btn whatsapp-fast-btn wpb-cta-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>Chat with HR & Attach CV &rarr;</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 

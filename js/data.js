@@ -17,6 +17,7 @@ const SGS_DATA = {
     phones: ["+91 9947144568", "+91 9847365124", "+91 8281027566"],
     whatsapp: "919947144568",
     email: "tax.sgs@gmail.com",
+    inquiryEndpoint: "", // Paste your Google Apps Script Web App URL here to enable Google Sheets & Email dispatch
     workingHours: "Mon - Sat: 9:30 AM - 6:00 PM",
     stats: [
       { label: "Branch Offices", value: "5", suffix: "+" },
@@ -354,12 +355,106 @@ const SGS_DATA = {
   },
 
   complianceCalendar: [
-    { day: "07", month: "Every Month", title: "TDS / TCS Deposit", desc: "Payment of tax deducted/collected at source for previous month" },
-    { day: "11", month: "Every Month", title: "GSTR-1 Filing", desc: "Monthly statement of outward supplies for regular taxpayers" },
-    { day: "15", month: "Every Month", title: "PF & ESI Challan", desc: "Remittance of Provident Fund & ESIC monthly contributions" },
-    { day: "20", month: "Every Month", title: "GSTR-3B Filing", desc: "Summary monthly return & tax liability payment" },
-    { day: "31", month: "July / Oct", title: "ITR Filing", desc: "Income Tax Returns for Non-Audit & Audited cases" }
-  ]
+    { day: "07", month: "Every Month", title: "TDS / TCS Deposit", desc: "Payment of tax deducted/collected at source for previous month", code: "tds" },
+    { day: "11", month: "Every Month", title: "GSTR-1 Filing", desc: "Monthly statement of outward supplies for regular taxpayers", code: "gstr1" },
+    { day: "15", month: "Every Month", title: "PF & ESI Challan", desc: "Remittance of Provident Fund & ESIC monthly contributions", code: "pfesi" },
+    { day: "20", month: "Every Month", title: "GSTR-3B Filing", desc: "Summary monthly return & tax liability payment", code: "gstr3b" },
+    { day: "31", month: "July / Oct", title: "ITR Filing", desc: "Income Tax Returns for Non-Audit & Audited cases", code: "itr" }
+  ],
+
+  // Client Success Stories & Case Highlights
+  clientStories: [
+    {
+      id: "manufacturing",
+      category: "Manufacturing & Industrial",
+      title: "Statutory Tax Audit & ₹4.2 Lakhs Input Tax Credit (ITC) Recovery",
+      clientType: "Engineering Machinery Manufacturer, Ernakulam",
+      challenge: "Accumulated uncredited GST ITC due to supplier non-filing and complex GSTR-2B mismatches threatening working capital.",
+      solution: "Conducted forensic line-by-line invoice reconciliation, issued legal supplier vendor notices, and successfully salvaged ITC before statutory deadline.",
+      metric: "₹4.2L+ ITC Recovered",
+      badge: "Zero Penalties"
+    },
+    {
+      id: "startup",
+      category: "Tech & E-Commerce",
+      title: "End-to-End Private Limited Incorporation & MCA Compliance in 7 Days",
+      clientType: "SaaS & Retail Platform, Kochi",
+      challenge: "Founder required fast company registration, PAN, TAN, GST, and international payment gateway compliance to receive seed funding.",
+      solution: "Executed expedited SPICe+ filing, drafted tailored MOA/AOA founder vesting clauses, and completed GST & bank setup within one week.",
+      metric: "7 Days Turnaround",
+      badge: "Full MCA Clearance"
+    },
+    {
+      id: "retail",
+      category: "Wholesale & Supermarkets",
+      title: "Multi-Branch Daily Bookkeeping & Punctual Monthly GST Filing",
+      clientType: "Chain of Supermarkets (North Paravur & Kodungallur)",
+      challenge: "High transaction volume, POS integration lags, and previous delay notices causing recurring late fees.",
+      solution: "Instituted centralized Tally Prime cloud sync, weekly purchase voucher validation, and automated GSTR-1 and GSTR-3B filings.",
+      metric: "100% On-Time Filing",
+      badge: "0 Scrutiny Notices"
+    },
+    {
+      id: "nri-tax",
+      category: "NRI & High Net-Worth",
+      title: "Kerala Property Sale TDS Exemption & Capital Gains Reinvestment",
+      clientType: "NRI Tech Executive (Dubai / Cherai)",
+      challenge: "Selling ancestral agricultural and residential land with steep 20%+ TDS withholding risk under Section 195.",
+      solution: "Secured Nil/Lower TDS withholding certificate from Assessing Officer under Section 197 and structured Section 54EC capital gains exemption bonds.",
+      metric: "₹8.5L Tax Saved",
+      badge: "Complete Repatriation"
+    }
+  ],
+
+  // Interactive Compliance Navigator Questions & Mappings
+  navigatorQuiz: {
+    steps: [
+      {
+        id: "entity",
+        title: "What is your business or entity structure?",
+        subtitle: "Select the legal form of your venture or individual status",
+        options: [
+          { id: "proprietorship", label: "Sole Proprietorship / Small Shop", icon: "user-check" },
+          { id: "partnership", label: "Partnership Firm / LLP", icon: "users" },
+          { id: "pvtltd", label: "Private Limited / Startup", icon: "building" },
+          { id: "individual", label: "Salaried Individual / Professional", icon: "file-text" },
+          { id: "nri", label: "NRI / Foreign Citizen", icon: "globe" }
+        ]
+      },
+      {
+        id: "goal",
+        title: "What is your primary compliance requirement?",
+        subtitle: "Choose the service you need immediate assistance with",
+        options: [
+          { id: "incorporation", label: "Register New Entity / Business License", icon: "key" },
+          { id: "tax_planning", label: "Income Tax Return (ITR) & Tax Saving", icon: "calculator" },
+          { id: "gst_filing", label: "GST Registration, Filing or Notice Reply", icon: "percent" },
+          { id: "audit_books", label: "Bookkeeping, Tally & Statutory Audit", icon: "trending-up" },
+          { id: "loan_report", label: "Bank Loan Project CMA Report", icon: "credit-card" }
+        ]
+      }
+    ],
+    results: {
+      "proprietorship_incorporation": {
+        recommendedService: "Partnership / Trade License & GST Setup",
+        turnaround: "2 - 4 Business Days",
+        checklist: ["Aadhaar & PAN Card", "Rental Agreement / Tax Receipt of Shop", "Cancelled Cheque", "Passport Size Photo"],
+        summary: "Ideal setup for local retailers and single-owner businesses in Kerala ensuring 100% legal compliance with minimal annual overhead."
+      },
+      "pvtltd_incorporation": {
+        recommendedService: "Company & LLP Registration (MCA SPICe+)",
+        turnaround: "5 - 7 Business Days",
+        checklist: ["Director PAN & Aadhaar / Passport", "Bank Statement with Present Address", "Digital Signature Certificate (DSC)", "Electricity Bill of Registered Office"],
+        summary: "Comprehensive incorporation package including Name Reservation, MOA/AOA, DIN, PAN, TAN, EPFO, ESIC, and corporate bank account introduction."
+      },
+      "default": {
+        recommendedService: "Custom Tax & Financial Compliance Advisory",
+        turnaround: "1 - 3 Business Days",
+        checklist: ["Financial Year Bank Statements", "Previous Year Returns (if any)", "Basic Identity Documents", "Relevant Invoices or Notices"],
+        summary: "Personalized consultation with our senior Chartered Accountants and tax consultants across our 5 Kerala branch locations."
+      }
+    }
+  }
 };
 
 // Make available globally on window (for vanilla JS) and export for ES modules/React

@@ -1,4 +1,4 @@
-﻿# SGS Associates — Official Website
+# SGS Associates — Official Website
 
 > **Accountants & Tax Practitioners | Kerala**
 > Qualified Chartered Accountants providing end-to-end financial compliance, taxation, auditing, and corporate registration services across 5 branches in Kerala.
@@ -38,6 +38,8 @@ SGSAssociates/
 │       ├── brand-logo-card.jpg   # OG / social share card image
 │       ├── hiring-flyer.jpg      # Original hiring flyer (source reference)
 │       └── services-flyer.jpg    # Services flyer (source reference)
+├── scripts/
+│   └── google-apps-script.js # Ready-to-paste Google Sheets & Email webhook
 ├── _source/                # Raw client-supplied WhatsApp images (reference only)
 ├── implementation_plan.md  # Technical implementation notes
 └── README.md               # This file
@@ -177,6 +179,33 @@ Edit `css/variables.css`:
 --color-green: #00D06C;
 --color-purple: #7940EC;
 ```
+
+---
+
+## 📬 Hybrid Enquiry Management Setup (Google Sheets + Email + WhatsApp)
+
+The website features an automated lead capture workflow:
+1. **Google Sheets**: Enquiries are logged as new rows in a shared spreadsheet.
+2. **Instant Email Alert**: Notifications are sent directly to `tax.sgs@gmail.com`.
+3. **WhatsApp Prompt**: Clients receive a fast-track prompt to chat directly on WhatsApp.
+
+### 3-Minute Setup Guide:
+1. Open [Google Sheets](https://sheets.new) in your browser while logged into your Google account (e.g. `tax.sgs@gmail.com`). Name the spreadsheet **SGS Associates Client Enquiries**.
+2. Click **Extensions** > **Apps Script** from the top menu.
+3. Replace all existing text in the script editor with the contents of [`scripts/google-apps-script.js`](scripts/google-apps-script.js).
+4. Click the **Save** (disk) icon.
+5. In the top-right corner, click **Deploy** > **New deployment**.
+6. Click the gear icon next to "Select type" and choose **Web app**:
+   - **Description**: `SGS Leads v1.0`
+   - **Execute as**: `Me (tax.sgs@gmail.com)`
+   - **Who has access**: `Anyone` *(Crucial: allows public form submissions without Google login)*
+7. Click **Deploy**. Google may ask for authorization — grant permissions.
+8. Copy the **Web app URL** (starts with `https://script.google.com/macros/s/...`).
+9. Open `js/data.js` and paste your URL into `SGS_DATA.firm.inquiryEndpoint`:
+   ```javascript
+   inquiryEndpoint: "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec",
+   ```
+10. Save the file. Your website is now fully connected!
 
 ---
 
