@@ -4,25 +4,69 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Determine current page from body dataset or path
+  const page = document.body.dataset.page || (function() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('services')) return 'services';
+    if (path.includes('due-dates')) return 'due-dates';
+    if (path.includes('tools')) return 'tools';
+    if (path.includes('about')) return 'about';
+    if (path.includes('careers')) return 'careers';
+    if (path.includes('contact')) return 'contact';
+    return 'home';
+  })();
+
+  // Initialize shared layout components if present
+  if (window.SGS_COMPONENTS && typeof window.SGS_COMPONENTS.init === 'function') {
+    window.SGS_COMPONENTS.init(page);
+  }
+
+  // Common initializers for all pages
   initHeader();
-  initScrollSpy();
-  initHeroParticles();
-  initCounters();
-  renderServices('all', '');
-  initServiceFilterTabs();
-  initServiceSearch();
-  initToolkitTabs();
-  initGstCalculator();
-  initIncomeTaxCalculator();
-  initComplianceQuiz();
-  renderBranches();
-  renderCalendar();
-  initDueCountdown();
-  initClientStories();
-  initCardSpotlight();
-  initContactForm();
-  initCareerModal();
   initMobileDrawer();
+  initContactForm();
+
+  // Page-specific initializers
+  if (page === 'home') {
+    initHeroParticles();
+    initCounters();
+    renderCalendar();
+    initDueCountdown();
+    initCardSpotlight();
+  } else if (page === 'services') {
+    renderServices('all', '');
+    initServiceFilterTabs();
+    initServiceSearch();
+    initCardSpotlight();
+  } else if (page === 'due-dates') {
+    renderCalendar();
+    initDueCountdown();
+    initCardSpotlight();
+  } else if (page === 'tools') {
+    initToolkitTabs();
+    initGstCalculator();
+    initIncomeTaxCalculator();
+    initComplianceQuiz();
+  } else if (page === 'about') {
+    initClientStories();
+    renderBranches();
+    initCardSpotlight();
+  } else if (page === 'careers') {
+    initCareerModal();
+    initCardSpotlight();
+  } else if (page === 'contact') {
+    renderBranches();
+    initCardSpotlight();
+  }
+
+  // Pre-fill service from URL if provided (e.g. ?service=GST+Registration)
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceParam = urlParams.get('service');
+  if (serviceParam && typeof window.selectServiceForInquiry === 'function') {
+    setTimeout(() => {
+      window.selectServiceForInquiry(serviceParam);
+    }, 300);
+  }
 });
 
 /* ==========================================================================
@@ -30,90 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initHeader() {
   const header = document.querySelector('.header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+  if (!header) return;
+
+  const onScroll = () => {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-  }, { passive: true });
-}
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-function initScrollSpy() {
-  const homeLink = document.getElementById('nav-link-home');
-  const servicesDropdownToggle = document.getElementById('nav-dropdown-services-toggle');
-  const aboutDropdownToggle = document.getElementById('nav-dropdown-about-toggle');
-  const careersLink = document.getElementById('nav-link-careers');
-  const contactLink = document.getElementById('nav-link-contact');
-
-  const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
-  const mobileLinks = document.querySelectorAll('.mobile-drawer-link');
-
-  // Defined sections and their corresponding navbar targets
-  const sectionMap = [
-    { id: 'home', target: homeLink },
-    { id: 'services', target: servicesDropdownToggle },
-    { id: 'tax-toolkit', target: servicesDropdownToggle },
-    { id: 'compliance-navigator', target: servicesDropdownToggle },
-    { id: 'why-us', target: aboutDropdownToggle },
-    { id: 'compliance-calendar', target: servicesDropdownToggle },
-    { id: 'careers', target: careersLink },
-    { id: 'branches', target: aboutDropdownToggle },
-    { id: 'client-stories', target: aboutDropdownToggle },
-    { id: 'contact', target: contactLink }
-  ];
-
-  function updateActiveLink() {
-    const scrollPosition = window.scrollY + 140; // Header height + buffer
-    let activeTarget = homeLink;
-    let activeSectionId = 'home';
-
-    // Check if scrolled near the bottom of the page
-    const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 120);
-
-    if (isAtBottom) {
-      activeTarget = contactLink;
-      activeSectionId = 'contact';
-    } else {
-      // Find the active section based on scroll position
-      for (let i = 0; i < sectionMap.length; i++) {
-        const item = sectionMap[i];
-        const sectionEl = document.getElementById(item.id);
-        if (sectionEl) {
-          const top = sectionEl.offsetTop;
-          const height = sectionEl.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            activeTarget = item.target;
-            activeSectionId = item.id;
-            break;
-          }
-        }
-      }
-    }
-
-    // Reset all nav-link active states
-    allNavLinks.forEach(link => link.classList.remove('active'));
-
-    // Activate current target with glowing underline
-    if (activeTarget) {
-      activeTarget.classList.add('active');
-    }
-
-    // Also update mobile drawer active link
-    mobileLinks.forEach(mLink => {
-      const href = mLink.getAttribute('href');
-      if (href === `#${activeSectionId}`) {
-        mLink.classList.add('active');
-      } else {
-        mLink.classList.remove('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  updateActiveLink();
-
-  // Dropdown touch support on tablets/mobile
+  // Dropdown touch/click support
   const dropdowns = document.querySelectorAll('.nav-dropdown');
   dropdowns.forEach(dd => {
     const toggle = dd.querySelector('.nav-dropdown-toggle');
@@ -135,6 +108,80 @@ function initScrollSpy() {
       }
     });
   });
+}
+
+function initScrollSpy() {
+  // Only activate in-page scrollspy if on homepage and hash links exist
+  const isHomePage = document.body.dataset.page === 'home';
+  if (!isHomePage) return;
+
+  const homeLink = document.getElementById('nav-link-home');
+  if (!homeLink) return;
+
+  const servicesDropdownToggle = document.getElementById('nav-dropdown-services-toggle');
+  const aboutDropdownToggle = document.getElementById('nav-dropdown-about-toggle');
+  const careersLink = document.getElementById('nav-link-careers');
+  const contactLink = document.getElementById('nav-link-contact');
+
+  const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-drawer-link');
+
+  const sectionMap = [
+    { id: 'home', target: homeLink },
+    { id: 'services', target: servicesDropdownToggle },
+    { id: 'compliance-calendar', target: servicesDropdownToggle },
+    { id: 'tax-toolkit', target: servicesDropdownToggle },
+    { id: 'compliance-navigator', target: servicesDropdownToggle },
+    { id: 'why-us', target: aboutDropdownToggle },
+    { id: 'client-stories', target: aboutDropdownToggle },
+    { id: 'branches', target: aboutDropdownToggle },
+    { id: 'careers', target: careersLink },
+    { id: 'contact', target: contactLink }
+  ];
+
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY + 140;
+    let activeTarget = homeLink;
+    let activeSectionId = 'home';
+
+    const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 120);
+
+    if (isAtBottom) {
+      activeTarget = contactLink;
+      activeSectionId = 'contact';
+    } else {
+      for (let i = 0; i < sectionMap.length; i++) {
+        const item = sectionMap[i];
+        const sectionEl = document.getElementById(item.id);
+        if (sectionEl) {
+          const top = sectionEl.offsetTop;
+          const height = sectionEl.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            activeTarget = item.target;
+            activeSectionId = item.id;
+            break;
+          }
+        }
+      }
+    }
+
+    if (activeTarget) {
+      allNavLinks.forEach(link => link.classList.remove('active'));
+      activeTarget.classList.add('active');
+    }
+
+    mobileLinks.forEach(mLink => {
+      const href = mLink.getAttribute('href');
+      if (href === `#${activeSectionId}`) {
+        mLink.classList.add('active');
+      } else {
+        mLink.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  updateActiveLink();
 }
 
 /* ==========================================================================
@@ -853,6 +900,7 @@ function initComplianceQuiz() {
    ========================================================================== */
 function initDueCountdown() {
   const daysEl = document.getElementById('clock-days');
+  if (!daysEl) return;
   const hoursEl = document.getElementById('clock-hours');
   const minsEl = document.getElementById('clock-mins');
   const secsEl = document.getElementById('clock-secs');
@@ -863,16 +911,22 @@ function initDueCountdown() {
     const currentYear = now.getFullYear();
     const currentMonth = now.getMonth(); // 0-indexed
 
-    // Statutory monthly targets:
+    // Statutory targets:
     // 7th: TDS Deposit
-    // 11th: GSTR-1
+    // 11th: GSTR-1 (Regular)
+    // 13th: GSTR-1 / IFF (QRMP)
     // 15th: PF & ESI
-    // 20th: GSTR-3B
+    // 18th: CMP-08 Quarterly
+    // 20th: GSTR-3B (Regular)
+    // 22nd: GSTR-3B Quarterly (QRMP)
     const targets = [
       { day: 7, title: "TDS / TCS Monthly Deposit" },
-      { day: 11, title: "GSTR-1 Monthly Outward Supplies" },
+      { day: 11, title: "GSTR-1 Monthly Outward Supplies (Regular)" },
+      { day: 13, title: "GSTR-1 / IFF Outward Supplies (QRMP)" },
       { day: 15, title: "PF & ESIC Monthly Remittance" },
-      { day: 20, title: "GSTR-3B Monthly Return & Tax Liability" }
+      { day: 18, title: "CMP-08 Quarterly Composition Statement" },
+      { day: 20, title: "GSTR-3B Monthly Return & Tax Liability" },
+      { day: 22, title: "GSTR-3B Quarterly Return (QRMP)" }
     ];
 
     for (let t of targets) {
@@ -1054,15 +1108,11 @@ function renderCalendar() {
   if (!container) return;
 
   container.innerHTML = SGS_DATA.complianceCalendar.map(item => `
-    <div class="calendar-item interactive-glow-card">
-      <div class="calendar-date-badge">
-        <span class="day">${item.day}</span>
-        <span class="month">${item.month}</span>
-      </div>
-      <div class="calendar-item-info">
-        <h4>${item.title}</h4>
-        <p>${item.desc}</p>
-      </div>
+    <div class="calendar-card interactive-glow-card">
+      <div class="calendar-card-day">${item.day}</div>
+      <div class="calendar-card-month">${item.month}</div>
+      <h4 class="calendar-card-title">${item.title}</h4>
+      <div class="calendar-card-desc">${item.desc}</div>
     </div>
   `).join('');
 
@@ -1293,6 +1343,11 @@ function initMobileDrawer() {
   function openDrawer() {
     if (drawer) drawer.classList.add('active');
     if (overlay) overlay.classList.add('active');
+  }
+
+  const closeBtn = document.getElementById('mobile-drawer-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDrawer);
   }
 
   if (toggleBtn) {

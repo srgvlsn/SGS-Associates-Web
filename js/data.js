@@ -41,7 +41,7 @@ const SGS_DATA = {
     {
       id: "company-llp-reg",
       category: "corporate",
-      categoryName: "Corporate & Business Registrations",
+      categoryName: "Corporate & MCA",
       title: "Company & LLP Registration (MCA)",
       shortDesc: "Complete end-to-end incorporation of Private Limited, OPC, Section 8 Companies, and LLPs through the Ministry of Corporate Affairs.",
       features: [
@@ -55,7 +55,7 @@ const SGS_DATA = {
     {
       id: "partnership-reg",
       category: "corporate",
-      categoryName: "Corporate & Business Registrations",
+      categoryName: "Corporate & MCA",
       title: "Partnership Firm Registration",
       shortDesc: "Formal legal constitution of partnership firms with ROF filing, notarization, and partnership deed drafting.",
       features: [
@@ -69,7 +69,7 @@ const SGS_DATA = {
     {
       id: "iec-code",
       category: "corporate",
-      categoryName: "Corporate & Business Registrations",
+      categoryName: "Corporate & MCA",
       title: "Import & Export Code (IEC)",
       shortDesc: "Registration and modification of 10-digit DGFT Import Export Code required for foreign trade and cross-border commercial transactions.",
       features: [
@@ -89,7 +89,7 @@ const SGS_DATA = {
       title: "Income Tax Filing & Compliance",
       shortDesc: "Accurate tax planning, computing, and timely e-filing of ITR for individuals, professionals, firms, trusts, and corporate entities.",
       features: [
-        "ITR 1 through ITR 7 computation & e-filing",
+        "ITR 1 to ITR 7 computation & e-filing",
         "Old vs. New Tax Regime comparison & optimization",
         "Capital gains calculations & tax-saving advisory",
         "Response to notices under section 143(1), 139(9), and 148"
@@ -323,6 +323,19 @@ const SGS_DATA = {
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Deshabhimani+Road+Kaloor+Kochi+Kerala"
+    },
+    {
+      id: "adimali",
+      name: "Adimali Branch (Idukki)",
+      isHeadOffice: false,
+      address: "Near KSRTC Bus Stand, High Range Commercial Arcade, NH 85, Adimali",
+      district: "Idukki",
+      pincode: "685561",
+      landmark: "Adimali Town Center",
+      phones: ["+91 9947144568", "+91 9847365124"],
+      email: "tax.sgs@gmail.com",
+      timing: "Mon - Sat: 9:30 AM - 6:00 PM",
+      mapQuery: "Adimali+Idukki+Kerala+685561"
     }
   ],
 
@@ -341,7 +354,8 @@ const SGS_DATA = {
       "Perumbavoor Branch",
       "Kodungallur Branch",
       "Cherai Branch",
-      "Deshabhimani, Kaloor (Ernakulam)"
+      "Deshabhimani, Kaloor (Ernakulam)",
+      "Adimali Branch (Idukki)"
     ],
     trainingAreas: [
       "Practical GST & Income Tax e-Filing",
@@ -355,11 +369,55 @@ const SGS_DATA = {
   },
 
   complianceCalendar: [
-    { day: "07", month: "Every Month", title: "TDS / TCS Deposit", desc: "Payment of tax deducted/collected at source for previous month", code: "tds" },
-    { day: "11", month: "Every Month", title: "GSTR-1 Filing", desc: "Monthly statement of outward supplies for regular taxpayers", code: "gstr1" },
-    { day: "15", month: "Every Month", title: "PF & ESI Challan", desc: "Remittance of Provident Fund & ESIC monthly contributions", code: "pfesi" },
-    { day: "20", month: "Every Month", title: "GSTR-3B Filing", desc: "Summary monthly return & tax liability payment", code: "gstr3b" },
-    { day: "31", month: "July / Oct", title: "ITR Filing", desc: "Income Tax Returns for Non-Audit & Audited cases", code: "itr" }
+    { 
+      day: "07", 
+      month: "Every Month", 
+      title: "TDS / TCS Deposit", 
+      desc: "Payment of tax deducted/collected at source for previous month", 
+      code: "tds" 
+    },
+    { 
+      day: "11 / 13", 
+      month: "Every Month", 
+      title: "GSTR-1 Filing", 
+      desc: "11th Every Month (Regular)<br>13th Every Month (QRMP)", 
+      code: "gstr1" 
+    },
+    { 
+      day: "15", 
+      month: "Every Month", 
+      title: "PF & ESI Challan", 
+      desc: "Remittance of Provident Fund & ESIC monthly contributions", 
+      code: "pfesi" 
+    },
+    { 
+      day: "18", 
+      month: "Quarterly", 
+      title: "CMP-08 Filing", 
+      desc: "Composition filing due date & quarterly statement payment", 
+      code: "cmp08" 
+    },
+    { 
+      day: "20 / 22", 
+      month: "Monthly / QRMP", 
+      title: "GSTR-3B Filing", 
+      desc: "20th Every Month (Regular)<br>22nd Quarterly (QRMP)", 
+      code: "gstr3b" 
+    },
+    { 
+      day: "31", 
+      month: "July / Oct", 
+      title: "ITR Filing", 
+      desc: "Income Tax Returns for Non-Audit & Audited cases", 
+      code: "itr" 
+    },
+    { 
+      day: "31 / 30", 
+      month: "Dec / June", 
+      title: "Annual Return", 
+      desc: "Regular: GSTR-9 & 9C (31 Dec every year)<br>Composition: GSTR-4 (30 June every year)", 
+      code: "annual" 
+    }
   ],
 
   // Client Success Stories & Case Highlights
