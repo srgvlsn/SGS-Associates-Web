@@ -2,21 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.1.0 - 2026-09-23 (v3.1)
+
+### Removed & Cleaned
+- **Repository Structure & Stub File Elimination**:
+  - Deleted 7 legacy root redirect stub files (`about.html`, `careers.html`, `clients.html`, `contact.html`, `due-dates.html`, `services.html`, `tools.html`) to establish a clean directory architecture where the project root exclusively contains `index.html`.
+  - Removed outdated root development plan artifact (`implementation_plan.md`) and internal audit scripts.
+- **Dead Code & Obsolete CSS Purged**:
+  - Deleted ~75 lines of uncalled, legacy `initScrollSpy()` code from [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js).
+  - Removed redundant `initClientStories()` and `renderBranches()` invocations under the About page in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js).
+  - Purged ~105 lines of orphaned, legacy CSS rules from [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css) (`.floating-actions`, `.floating-btn`, `.mobile-drawer-group`, `.mobile-drawer-heading`, `.service-search-bar-container`, `.service-search-status`, `.quick-island-dock`, and `.dock-item`).
+  - Simplified `.service-filter-tabs` selector alias into `.filter-tabs`.
+
+### Changed & Harmonized
+- **Redundancy Elimination Within Pages**:
+  - Removed duplicated Client Stories (`#client-stories`) and Branch locator cards (`#branches`) from `firm/about/index.html`, retaining single-source-of-truth architectures on dedicated `/clients` and `/contact` pages.
+  - Elevated `firm/about/index.html` with an enterprise 4-Tier Governance & Quality Assurance framework (dual-layer partner review, bank-grade data security, zero penalty assurance, direct partner availability) and cross-hub navigation cards.
+- **Consistency Across Components & Data**:
+  - Standardized branch location names across `js/data.js` (`branchesHiring`), `<select id="consultation-branch">` in `js/components.js`, and `<select id="applicant-branch">` in `firm/careers/index.html` into uniform `[Town], [District]` options.
+  - Updated `SGS_DATA.firm.stats` branch count from `"5"` to `"6"`.
+  - Fixed phone number typo in direct helpline (`+91 98473 6512` $\rightarrow$ `+91 98473 65124`) in `js/components.js`.
+  - Harmonized all relative breadcrumbs and header/footer brand links across all pages to navigate directly to clean directory roots (`../`, `../../`, `${root}`) rather than exposing `index.html` in browser address bars.
+  - Updated district coverage in `firm/careers/index.html` to reflect Ernakulam, Thrissur, and Idukki (Adimali).
+
 ## 3.0.0 - 2026-09-18 (v3.0)
 
 ### Added
+- **Clean URL Architecture & Directory Restructuring**:
+  - Restructured routes into clean, modern directory endpoints without visible `.html` extensions:
+    - `/services`: All 18+ services directory with live search and category filter.
+    - `/services/due-dates`: Statutory compliance calendar with live countdown ticker and WhatsApp alerts.
+    - `/services/financial-tools`: Interactive Smart GST and New vs. Old Tax Regime calculators.
+    - `/clients`: Dedicated client showcase highlighting measurable results, case studies, and industry coverage.
+    - `/firm/about`: Firm profile, credibility pillars, and partner practice overview.
+    - `/firm/careers`: Careers & CA articleship opportunities with interactive application modal.
+    - `/contact`: Regional branch locator, maps, helpline numbers, and direct consultation booking.
 - **Multi-Page Web Architecture (Orchid Security Inspired)**:
-  - Restructured the monolithic single-page layout into 6 dedicated, high-performance subpages with focused breadcrumb hero banners:
-    - [`services.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services.html): Complete 18+ services catalogue with interactive category filters, real-time search, and 1-click enquiry pre-fill.
-    - [`due-dates.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/due-dates.html): Statutory compliance calendar with live countdown clock ticker, QRMP & CMP-08 details, reference table, and WhatsApp alerts.
-    - [`tools.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/tools.html): Interactive Financial Toolkit featuring Smart GST estimator, New vs. Old Tax Regime simulator, and 3-step compliance quiz with custom SVG icons.
-    - [`about.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/about.html): Firm profile, 4 credibility pillars, interactive client case studies tabs, and 6 branch cards.
-    - [`careers.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/careers.html): We Are Hiring section, branch positions, and CA articleship / trainee application modal.
-    - [`contact.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/contact.html): Walk-in branch directory, maps/directions info, helpline numbers, and direct consultation booking.
+  - High-performance subpages with focused breadcrumb hero banners.
 - **Persistent Pre-Footer Global Contact Form**:
   - Embedded a high-converting consultation form right above the footer across every single page.
   - Features enterprise trust badges, dynamic service auto-selection, WhatsApp routing, and interactive submission confirmation states.
 - **Centralized Shared Components Engine (`js/components.js`)**:
+  - Root-path aware rendering (`data-root`) for seamless asset and link resolution across nested directories.
   - Unified rendering for top helpline bar, floating sticky header with official logo ([`assets/icons/LOGO.png`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/assets/icons/LOGO.png)), responsive mobile drawer, global contact section, and comprehensive footer.
 - **New 6th Branch at Adimali (Idukki)**:
   - Added full branch data (`Near KSRTC Bus Stand, High Range Commercial Arcade, NH 85, Adimali`) in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js).
@@ -25,20 +52,29 @@ All notable changes to this project will be documented in this file.
   - Fast department access cards on [`index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/index.html) allowing visitors to immediately navigate into their required section.
 
 ### Changed & Enhanced
+- **Streamlined 5-Item Navigation Bar (`js/components.js`, `css/style.css`)**:
+  - Removed "Due Dates" and "Financial Tools" from the top-level navbar and nested them cleanly under the **Services** dropdown (`/services`, `/services/due-dates`, `/services/financial-tools`).
+  - Reorganized firm profile links under a non-clickable **"Firm"** navbar header (`.nav-dropdown-toggle-static`) that smoothly pops up **About Us** (`/firm/about`) and **Careers (Hiring)** (`/firm/careers`) on hover and focus without triggering page navigation.
+  - Moved **Clients** (`/clients`) to a dedicated top-level navigation link.
 - **Floating Sticky Navbar Architecture (`css/style.css`, `js/components.js`, `js/main.js`)**:
   - Replaced wrapper container injection with `.outerHTML` and set `position: sticky; top: 0; z-index: 1000; width: 100%;` so the header smoothly sticks and floats across all pages upon scrolling.
   - Switched body and html horizontal overflow to modern `overflow-x: clip;` preventing browser clipping contexts from disabling sticky positioning.
-  - Restored interactive dropdown menus on "Services" and "About Us" with hover chevrons and seamless direct links.
   - Added `scroll-margin-top: 90px;` to all section anchors for clean alignment beneath the floating header.
-- **Favicon Restored Across All 7 Pages**:
+- **Favicon Restored Across All Pages**:
   - Replaced rectangular banner logo with the dedicated high-resolution square SGS emblem ([`assets/icons/LOGO_favicon.png`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/assets/icons/LOGO_favicon.png)) across all HTML `<head>` tags.
 - **Design System & Typography Standardization**:
-  - Standardized font loading across all 7 HTML `<head>` files with preconnected Google Fonts (`Outfit` + `Inter`) and removed render-blocking CSS `@import`.
+  - Standardized font loading across all HTML `<head>` files with preconnected Google Fonts (`Outfit` + `Inter`) and removed render-blocking CSS `@import`.
   - Upgraded quiz `.q-icon` with crisp vector SVG icons and glowing glassmorphic containers.
-  - Replaced 40+ raw inline styles on [`due-dates.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/due-dates.html) with semantic classes (`.compliance-table-card`, `.compliance-table`).
+  - Replaced 40+ raw inline styles on due dates with semantic classes (`.compliance-table-card`, `.compliance-table`).
 
 ### Fixed
-- **Fixed Search Icon in Services (`services.html`)**:
+- **Services Page Layout & Element Spacing (`css/style.css`)**:
+  - Resolved the lack of spacing between filter tabs, search box, and interactive glow cards:
+    - Added flex column container `.services-filter-bar` with `gap: 28px; margin-bottom: 48px;`.
+    - Standardized `.filter-tabs` with flex gap (`12px`) and center alignment.
+    - Constrained `.service-search-box` width to `max-width: 640px; margin: 0 auto;`.
+    - Added `margin-bottom: 56px;` to `.services-grid` for clean separation from the callout advisory card.
+- **Fixed Search Icon in Services**:
   - Constrained `.service-search-box svg` and `.search-icon` to fixed 20x20px dimensions with explicit SVG attributes and CSS rules, eliminating icon enlargement.
 - **Desktop Navigation Fitting & Responsive Breakpoints**:
   - Standardized `.nav-menu` gap (`clamp(8px, 1.3vw, 20px)`) and `.nav-link` font size (`0.91rem`) to eliminate link wrapping between 1024px and 1280px viewports.

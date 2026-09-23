@@ -20,7 +20,7 @@ const SGS_DATA = {
     inquiryEndpoint: "", // Paste your Google Apps Script Web App URL here to enable Google Sheets & Email dispatch
     workingHours: "Mon - Sat: 9:30 AM - 6:00 PM",
     stats: [
-      { label: "Branch Offices", value: "5", suffix: "+" },
+      { label: "Branch Offices", value: "6", suffix: "" },
       { label: "Core Practice Areas", value: "18", suffix: "+" },
       { label: "Compliance Rate", value: "100", suffix: "%" },
       { label: "Satisfied Clients", value: "1,500", suffix: "+" }
@@ -261,7 +261,7 @@ const SGS_DATA = {
   branches: [
     {
       id: "north-paravur",
-      name: "Head Office - North Paravur",
+      name: "North Paravur, Ernakulam",
       isHeadOffice: true,
       address: "2nd Floor, Vyapara Bhavan Complex, Chendamangalam Jn. Main Road, North Paravur",
       district: "Ernakulam",
@@ -274,7 +274,7 @@ const SGS_DATA = {
     },
     {
       id: "kodungallur",
-      name: "Kodungallur Branch",
+      name: "Kodungallur, Thrissur",
       isHeadOffice: false,
       address: "Main Commercial Center, Near Town Hall, Kodungallur",
       district: "Thrissur",
@@ -287,7 +287,7 @@ const SGS_DATA = {
     },
     {
       id: "cherai",
-      name: "Cherai Branch",
+      name: "Cherai, Ernakulam",
       isHeadOffice: false,
       address: "Coastal Commercial Plaza, Cherai Beach Road, Cherai",
       district: "Ernakulam",
@@ -300,7 +300,7 @@ const SGS_DATA = {
     },
     {
       id: "perumbavoor",
-      name: "Perumbavoor Branch",
+      name: "Perumbavoor, Ernakulam",
       isHeadOffice: false,
       address: "Merchant Association Arcade, AM Road, Perumbavoor",
       district: "Ernakulam",
@@ -312,8 +312,8 @@ const SGS_DATA = {
       mapQuery: "Perumbavoor+Ernakulam+Kerala"
     },
     {
-      id: "ernakulam-kaloor",
-      name: "Ernakulam / Kaloor Branch",
+      id: "kaloor",
+      name: "Kaloor, Ernakulam",
       isHeadOffice: false,
       address: "Deshabhimani Road, Kaloor, Kochi",
       district: "Ernakulam",
@@ -326,7 +326,7 @@ const SGS_DATA = {
     },
     {
       id: "adimali",
-      name: "Adimali Branch (Idukki)",
+      name: "Adimali, Idukki",
       isHeadOffice: false,
       address: "Near KSRTC Bus Stand, High Range Commercial Arcade, NH 85, Adimali",
       district: "Idukki",
@@ -350,12 +350,12 @@ const SGS_DATA = {
       { text: "B.Com / M.Com / BBA / CA-Inter / CMA aspirants preferred", icon: "check-circle" }
     ],
     branchesHiring: [
-      "Head Office - North Paravur",
-      "Perumbavoor Branch",
-      "Kodungallur Branch",
-      "Cherai Branch",
-      "Deshabhimani, Kaloor (Ernakulam)",
-      "Adimali Branch (Idukki)"
+      "North Paravur, Ernakulam",
+      "Kodungallur, Thrissur",
+      "Cherai, Ernakulam",
+      "Perumbavoor, Ernakulam",
+      "Kaloor, Ernakulam",
+      "Adimali, Idukki"
     ],
     trainingAreas: [
       "Practical GST & Income Tax e-Filing",

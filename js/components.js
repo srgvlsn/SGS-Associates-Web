@@ -49,31 +49,41 @@ const SGS_COMPONENTS = {
   },
 
   /**
+   * Determine relative root path based on document data-root attribute or depth
+   */
+  getRootPath() {
+    return document.body.dataset.root || '';
+  },
+
+  /**
    * Render Main Sticky Header with Navigation
-   * @param {string} activePage - e.g. 'home', 'services', 'due-dates', 'tools', 'about', 'careers', 'contact'
+   * @param {string} activePage - e.g. 'home', 'services', 'due-dates', 'tools', 'about', 'careers', 'contact', 'clients'
    */
   getHeaderHTML(activePage = 'home') {
+    const root = this.getRootPath();
     const isActive = (page) => activePage === page ? 'active' : '';
+    const isServicesActive = activePage === 'services' || activePage === 'due-dates' || activePage === 'tools' ? 'active' : '';
+    const isFirmActive = activePage === 'about' || activePage === 'careers' ? 'active' : '';
 
     return `
       <header class="header" role="banner">
         <div class="container">
-          <a href="index.html" class="brand-logo" title="SGS Associates Homepage">
-            <img src="assets/icons/LOGO.png" alt="SGS Associates Logo" width="180" height="48">
+          <a href="${root}" class="brand-logo" title="SGS Associates Homepage">
+            <img src="${root}assets/icons/LOGO.png" alt="SGS Associates Logo" width="180" height="48">
           </a>
 
           <!-- Desktop Navigation Menu with Clean Dropdowns -->
           <nav class="nav-menu" aria-label="Main Navigation">
-            <a href="index.html" class="nav-link ${isActive('home')}">Home</a>
+            <a href="${root}" class="nav-link ${isActive('home')}">Home</a>
 
-            <!-- Services Dropdown -->
+            <!-- Services Dropdown (Stacked with Services, Due Dates & Financial Tools) -->
             <div class="nav-dropdown">
-              <a href="services.html" class="nav-link nav-dropdown-toggle ${isActive('services')}">
+              <a href="${root}services/" class="nav-link nav-dropdown-toggle ${isServicesActive}">
                 <span>Services</span>
                 <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
               </a>
               <div class="nav-dropdown-menu">
-                <a href="services.html" class="dropdown-item">
+                <a href="${root}services/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
                   </div>
@@ -82,7 +92,7 @@ const SGS_COMPONENTS = {
                     <span>MCA, GST, Audits, PF &amp; Appeals</span>
                   </div>
                 </a>
-                <a href="due-dates.html" class="dropdown-item">
+                <a href="${root}services/due-dates/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                   </div>
@@ -91,60 +101,50 @@ const SGS_COMPONENTS = {
                     <span>Live Countdown &amp; Tax Deadlines</span>
                   </div>
                 </a>
-                <a href="tools.html" class="dropdown-item">
+                <a href="${root}services/financial-tools/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/></svg>
                   </div>
                   <div class="dd-text">
-                    <strong>Tax &amp; GST Calculators</strong>
+                    <strong>Financial Tools</strong>
                     <span>GST Estimator &amp; Regime Comparison</span>
                   </div>
                 </a>
               </div>
             </div>
 
-            <a href="due-dates.html" class="nav-link ${isActive('due-dates')}">Due Dates</a>
-            <a href="tools.html" class="nav-link ${isActive('tools')}">Financial Tools</a>
+            <!-- Clients Top-Level Link -->
+            <a href="${root}clients/" class="nav-link ${isActive('clients')}">Clients</a>
 
-            <!-- About Us Dropdown -->
+            <!-- Firm Dropdown (Non-Clickable Heading on Navbar, Pops up About Us & Careers) -->
             <div class="nav-dropdown">
-              <a href="about.html" class="nav-link nav-dropdown-toggle ${isActive('about')}">
-                <span>About Us</span>
+              <button type="button" class="nav-link nav-dropdown-toggle nav-dropdown-toggle-static ${isFirmActive}" aria-expanded="false" aria-haspopup="true" style="cursor: default;">
+                <span>Firm</span>
                 <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              </a>
+              </button>
               <div class="nav-dropdown-menu">
-                <a href="about.html" class="dropdown-item">
+                <a href="${root}firm/about/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
                   </div>
                   <div class="dd-text">
-                    <strong>Firm Profile &amp; Pillars</strong>
-                    <span>Over 15 Years of Trusted Practice</span>
+                    <strong>About Us</strong>
+                    <span>Firm Profile &amp; Over 15 Years of Practice</span>
                   </div>
                 </a>
-                <a href="about.html#client-stories" class="dropdown-item">
+                <a href="${root}firm/careers/" class="dropdown-item">
                   <div class="dd-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                   </div>
                   <div class="dd-text">
-                    <strong>Client Case Studies</strong>
-                    <span>Real-world Tax Solutions</span>
-                  </div>
-                </a>
-                <a href="contact.html#branches" class="dropdown-item">
-                  <div class="dd-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                  </div>
-                  <div class="dd-text">
-                    <strong>6 Regional Branches</strong>
-                    <span>North Paravur, Adimali &amp; More</span>
+                    <strong>Careers <span class="nav-badge-hiring" style="margin-left: 4px;">Hiring</span></strong>
+                    <span>Articleship &amp; CA Professional Openings</span>
                   </div>
                 </a>
               </div>
             </div>
 
-            <a href="careers.html" class="nav-link ${isActive('careers')}">Careers <span class="nav-badge-hiring">Hiring</span></a>
-            <a href="contact.html" class="nav-link ${isActive('contact')}">Contact &amp; Branches</a>
+            <a href="${root}contact/" class="nav-link ${isActive('contact')}">Contact &amp; Branches</a>
           </nav>
 
           <!-- Action Button & Mobile Toggle -->
@@ -169,13 +169,14 @@ const SGS_COMPONENTS = {
    * Render Mobile Slide Drawer
    */
   getMobileDrawerHTML(activePage = 'home') {
+    const root = this.getRootPath();
     const isActive = (page) => activePage === page ? 'active' : '';
 
     return `
       <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
       <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
-          <img src="assets/icons/LOGO.png" alt="SGS Associates" style="height: 38px;">
+          <img src="${root}assets/icons/LOGO.png" alt="SGS Associates" style="height: 38px;">
           <button id="mobile-drawer-close" aria-label="Close navigation" style="background: transparent; border: none; color: #fff; cursor: pointer; padding: 4px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -184,13 +185,14 @@ const SGS_COMPONENTS = {
           </button>
         </div>
         <div class="mobile-drawer-nav">
-          <a href="index.html" class="mobile-drawer-link ${isActive('home')}">Home</a>
-          <a href="services.html" class="mobile-drawer-link ${isActive('services')}">Services (18+ Areas)</a>
-          <a href="due-dates.html" class="mobile-drawer-link ${isActive('due-dates')}">Due Dates &amp; Calendar</a>
-          <a href="tools.html" class="mobile-drawer-link ${isActive('tools')}">Financial Tools &amp; Calculators</a>
-          <a href="about.html" class="mobile-drawer-link ${isActive('about')}">About Firm &amp; Success Stories</a>
-          <a href="careers.html" class="mobile-drawer-link ${isActive('careers')}">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
-          <a href="contact.html" class="mobile-drawer-link ${isActive('contact')}">Contact &amp; 6 Kerala Branches</a>
+          <a href="${root}" class="mobile-drawer-link ${isActive('home')}">Home</a>
+          <a href="${root}services/" class="mobile-drawer-link ${isActive('services')}">Services (18+ Areas)</a>
+          <a href="${root}services/due-dates/" class="mobile-drawer-link ${isActive('due-dates')}">Statutory Due Dates &amp; Calendar</a>
+          <a href="${root}services/financial-tools/" class="mobile-drawer-link ${isActive('tools')}">Financial Tools &amp; Calculators</a>
+          <a href="${root}clients/" class="mobile-drawer-link ${isActive('clients')}">Clients &amp; Success Stories</a>
+          <a href="${root}firm/about/" class="mobile-drawer-link ${isActive('about')}">About Us</a>
+          <a href="${root}firm/careers/" class="mobile-drawer-link ${isActive('careers')}">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
+          <a href="${root}contact/" class="mobile-drawer-link ${isActive('contact')}">Contact &amp; 6 Kerala Branches</a>
         </div>
         <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--bg-dark-border);">
           <a href="#contact" class="btn btn-primary mobile-drawer-link" style="width: 100%; margin-bottom: 12px; text-align: center;">Book Consultation</a>
@@ -231,8 +233,7 @@ const SGS_COMPONENTS = {
                   </div>
                   <div class="method-details">
                     <h5>Direct Helpline</h5>
-                    <a href="tel:9947144568">+91 99471 44568</a>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">Also: 9847365124 / 8281027566</span>
+                    <a href="tel:9947144568">+91 99471 44568</a> / <a href="tel:9847365124">+91 98473 65124</a> / <a href="tel:8281027566">+91 82810 27566</a>
                   </div>
                 </div>
 
@@ -333,12 +334,12 @@ const SGS_COMPONENTS = {
                 <div class="form-group">
                   <label for="consultation-branch" class="form-label">Preferred Branch</label>
                   <select id="consultation-branch" class="form-select">
-                    <option value="Head Office - North Paravur">Head Office - North Paravur</option>
-                    <option value="Kodungallur Branch">Kodungallur Branch</option>
-                    <option value="Cherai Branch">Cherai Branch</option>
-                    <option value="Perumbavoor Branch">Perumbavoor Branch</option>
-                    <option value="Kaloor Branch">Kaloor Branch</option>
-                    <option value="Adimali Branch">Adimali Branch (Idukki)</option>
+                    <option value="North Paravur, Ernakulam">North Paravur, Ernakulam (Head Office)</option>
+                    <option value="Kodungallur, Thrissur">Kodungallur, Thrissur</option>
+                    <option value="Cherai, Ernakulam">Cherai, Ernakulam</option>
+                    <option value="Perumbavoor, Ernakulam">Perumbavoor, Ernakulam</option>
+                    <option value="Kaloor, Ernakulam">Kaloor, Ernakulam</option>
+                    <option value="Adimali, Idukki">Adimali, Idukki</option>
                   </select>
                 </div>
 
@@ -407,6 +408,8 @@ const SGS_COMPONENTS = {
    * Render Multi-Column Footer
    */
   getFooterHTML() {
+    const root = this.getRootPath();
+
     return `
       <footer class="footer" role="contentinfo">
         <div class="container">
@@ -417,8 +420,8 @@ const SGS_COMPONENTS = {
           <div class="footer-grid">
             <!-- Brand Info -->
             <div class="footer-brand">
-              <a href="index.html">
-                <img src="assets/icons/LOGO.png" alt="SGS Associates Logo" style="height: 44px; margin-bottom: 16px;">
+              <a href="${root}">
+                <img src="${root}assets/icons/LOGO.png" alt="SGS Associates Logo" style="height: 44px; margin-bottom: 16px;">
               </a>
               <p>
                 Qualified Chartered Accountants &amp; Tax Practitioners providing accounting, statutory audit, taxation, and MCA corporate registration services across Kerala.
@@ -432,13 +435,14 @@ const SGS_COMPONENTS = {
             <div>
               <h4 class="footer-heading">Pages</h4>
               <ul class="footer-links-list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">All 18+ Services</a></li>
-                <li><a href="due-dates.html">Compliance Due Dates</a></li>
-                <li><a href="tools.html">Financial Tools &amp; Calculators</a></li>
-                <li><a href="about.html">About Firm &amp; Stories</a></li>
-                <li><a href="careers.html">Careers &amp; Articleship</a></li>
-                <li><a href="contact.html">Contact &amp; 6 Branches</a></li>
+                <li><a href="${root}">Home</a></li>
+                <li><a href="${root}services/">All 18+ Services</a></li>
+                <li><a href="${root}services/due-dates/">Compliance Due Dates</a></li>
+                <li><a href="${root}services/financial-tools/">Financial Tools &amp; Calculators</a></li>
+                <li><a href="${root}clients/">Clients &amp; Case Studies</a></li>
+                <li><a href="${root}firm/about/">About Firm &amp; Pillars</a></li>
+                <li><a href="${root}firm/careers/">Careers &amp; Articleship</a></li>
+                <li><a href="${root}contact/">Contact &amp; 6 Branches</a></li>
               </ul>
             </div>
 
@@ -446,12 +450,12 @@ const SGS_COMPONENTS = {
             <div>
               <h4 class="footer-heading">Core Practice</h4>
               <ul class="footer-links-list">
-                <li><a href="services.html">Company &amp; LLP Registration</a></li>
-                <li><a href="services.html">Income Tax Filing &amp; Audit</a></li>
-                <li><a href="services.html">GST Returns &amp; Reconciliations</a></li>
-                <li><a href="services.html">Bookkeeping &amp; Accounting</a></li>
-                <li><a href="services.html">Bank Project Reports (CMA)</a></li>
-                <li><a href="services.html">PF &amp; ESI Labour Law</a></li>
+                <li><a href="${root}services/">Company &amp; LLP Registration</a></li>
+                <li><a href="${root}services/">Income Tax Filing &amp; Audit</a></li>
+                <li><a href="${root}services/">GST Returns &amp; Reconciliations</a></li>
+                <li><a href="${root}services/">Bookkeeping &amp; Accounting</a></li>
+                <li><a href="${root}services/">Bank Project Reports (CMA)</a></li>
+                <li><a href="${root}services/">PF &amp; ESI Labour Law</a></li>
               </ul>
             </div>
 
@@ -471,11 +475,11 @@ const SGS_COMPONENTS = {
           <div class="footer-bottom">
             <p>&copy; ${new Date().getFullYear()} SGS Associates. All Rights Reserved. Chartered Accountants &amp; Tax Practitioners.</p>
             <div class="footer-bottom-links">
-              <a href="contact.html">Privacy &amp; Terms</a>
+              <a href="${root}contact/">Privacy &amp; Terms</a>
               <span>•</span>
-              <a href="due-dates.html">Tax Calendar</a>
+              <a href="${root}services/due-dates/">Tax Calendar</a>
               <span>•</span>
-              <a href="contact.html">Branch Locator</a>
+              <a href="${root}contact/">Branch Locator</a>
             </div>
           </div>
         </div>

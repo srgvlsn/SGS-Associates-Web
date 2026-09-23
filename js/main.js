@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Determine current page from body dataset or path
   const page = document.body.dataset.page || (function() {
     const path = window.location.pathname.toLowerCase();
-    if (path.includes('services')) return 'services';
     if (path.includes('due-dates')) return 'due-dates';
-    if (path.includes('tools')) return 'tools';
+    if (path.includes('financial-tools') || path.includes('tools')) return 'tools';
+    if (path.includes('services')) return 'services';
+    if (path.includes('clients')) return 'clients';
     if (path.includes('about')) return 'about';
     if (path.includes('careers')) return 'careers';
     if (path.includes('contact')) return 'contact';
@@ -47,9 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initGstCalculator();
     initIncomeTaxCalculator();
     initComplianceQuiz();
-  } else if (page === 'about') {
+  } else if (page === 'clients') {
     initClientStories();
-    renderBranches();
+    initCardSpotlight();
+  } else if (page === 'about') {
     initCardSpotlight();
   } else if (page === 'careers') {
     initCareerModal();
@@ -108,80 +110,6 @@ function initHeader() {
       }
     });
   });
-}
-
-function initScrollSpy() {
-  // Only activate in-page scrollspy if on homepage and hash links exist
-  const isHomePage = document.body.dataset.page === 'home';
-  if (!isHomePage) return;
-
-  const homeLink = document.getElementById('nav-link-home');
-  if (!homeLink) return;
-
-  const servicesDropdownToggle = document.getElementById('nav-dropdown-services-toggle');
-  const aboutDropdownToggle = document.getElementById('nav-dropdown-about-toggle');
-  const careersLink = document.getElementById('nav-link-careers');
-  const contactLink = document.getElementById('nav-link-contact');
-
-  const allNavLinks = document.querySelectorAll('.nav-menu .nav-link');
-  const mobileLinks = document.querySelectorAll('.mobile-drawer-link');
-
-  const sectionMap = [
-    { id: 'home', target: homeLink },
-    { id: 'services', target: servicesDropdownToggle },
-    { id: 'compliance-calendar', target: servicesDropdownToggle },
-    { id: 'tax-toolkit', target: servicesDropdownToggle },
-    { id: 'compliance-navigator', target: servicesDropdownToggle },
-    { id: 'why-us', target: aboutDropdownToggle },
-    { id: 'client-stories', target: aboutDropdownToggle },
-    { id: 'branches', target: aboutDropdownToggle },
-    { id: 'careers', target: careersLink },
-    { id: 'contact', target: contactLink }
-  ];
-
-  function updateActiveLink() {
-    const scrollPosition = window.scrollY + 140;
-    let activeTarget = homeLink;
-    let activeSectionId = 'home';
-
-    const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 120);
-
-    if (isAtBottom) {
-      activeTarget = contactLink;
-      activeSectionId = 'contact';
-    } else {
-      for (let i = 0; i < sectionMap.length; i++) {
-        const item = sectionMap[i];
-        const sectionEl = document.getElementById(item.id);
-        if (sectionEl) {
-          const top = sectionEl.offsetTop;
-          const height = sectionEl.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            activeTarget = item.target;
-            activeSectionId = item.id;
-            break;
-          }
-        }
-      }
-    }
-
-    if (activeTarget) {
-      allNavLinks.forEach(link => link.classList.remove('active'));
-      activeTarget.classList.add('active');
-    }
-
-    mobileLinks.forEach(mLink => {
-      const href = mLink.getAttribute('href');
-      if (href === `#${activeSectionId}`) {
-        mLink.classList.add('active');
-      } else {
-        mLink.classList.remove('active');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveLink, { passive: true });
-  updateActiveLink();
 }
 
 /* ==========================================================================
@@ -1157,7 +1085,7 @@ function initContactForm() {
       phone: (document.getElementById('consultation-phone')?.value || '').trim(),
       email: (document.getElementById('consultation-email')?.value || '').trim(),
       service: document.getElementById('consultation-service')?.value || 'General Compliance / Other',
-      branch: document.getElementById('consultation-branch')?.value || 'Head Office - North Paravur',
+      branch: document.getElementById('consultation-branch')?.value || 'North Paravur, Ernakulam',
       message: (document.getElementById('consultation-message')?.value || '').trim(),
       submittedAt: new Date().toISOString()
     };
@@ -1279,7 +1207,7 @@ function initCareerModal() {
       const name = (document.getElementById('applicant-name')?.value || '').trim();
       const phone = (document.getElementById('applicant-phone')?.value || '').trim();
       const qualification = document.getElementById('applicant-qualification')?.value || 'B.Com';
-      const branch = document.getElementById('applicant-branch')?.value || 'Head Office - North Paravur';
+      const branch = document.getElementById('applicant-branch')?.value || 'North Paravur, Ernakulam';
       const notes = (document.getElementById('applicant-notes')?.value || '').trim();
 
       if (!name || !phone) {

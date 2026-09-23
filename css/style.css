@@ -364,6 +364,13 @@ section[id],
   pointer-events: none;
 }
 
+.nav-dropdown-toggle-static {
+  cursor: default;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+}
+
 .nav-dropdown:hover .dropdown-chevron,
 .nav-dropdown:focus-within .dropdown-chevron,
 .nav-dropdown.is-open .dropdown-chevron {
@@ -745,13 +752,21 @@ section[id],
   position: relative;
 }
 
-.service-filter-tabs {
+.services-filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.filter-tabs {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 48px;
 }
 
 .filter-tab-btn {
@@ -782,6 +797,7 @@ section[id],
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
+  margin-bottom: 56px;
 }
 
 .service-card {
@@ -1868,46 +1884,6 @@ section[id],
 }
 
 /* ==========================================================================
-   FLOATING QUICK ACTION TRIGGER (WHATSAPP & CALL)
-   ========================================================================== */
-.floating-actions {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 999;
-}
-
-.floating-btn {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FFFFFF;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: all var(--transition-base);
-}
-
-.floating-btn.whatsapp {
-  background: #25D366;
-}
-
-.floating-btn.whatsapp:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
-}
-
-.floating-btn.call {
-  background: var(--color-purple);
-  display: none;
-  /* Shown on mobile */
-}
-
-/* ==========================================================================
    MODAL (CAREER APPLICATION)
    ========================================================================== */
 .modal-overlay {
@@ -2065,10 +2041,6 @@ section[id],
     width: 100%;
   }
 
-  .floating-btn.call {
-    display: flex;
-  }
-
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -2117,30 +2089,6 @@ section[id],
     overflow-y: auto;
     max-height: calc(100vh - 180px);
     padding-right: 4px;
-  }
-
-  .mobile-drawer-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin: 4px 0;
-  }
-
-  .mobile-drawer-heading {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--color-green);
-    font-weight: 700;
-  }
-
-  .mobile-drawer-group .mobile-drawer-link {
-    padding-left: 8px;
-    font-size: 0.95rem;
-    font-weight: 500;
   }
 
   .mobile-drawer-link.active {
@@ -2257,12 +2205,6 @@ section[id],
 }
 
 /* 3. Real-Time Service Search Bar */
-.service-search-bar-container {
-  max-width: 680px;
-  margin: 0 auto 30px auto;
-  position: relative;
-}
-
 .service-search-box {
   display: flex;
   align-items: center;
@@ -2272,6 +2214,9 @@ section[id],
   border-radius: var(--radius-full);
   padding: 12px 20px;
   backdrop-filter: blur(12px);
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -2312,13 +2257,6 @@ section[id],
 
 .service-search-clear:hover {
   color: #FFFFFF;
-}
-
-.service-search-status {
-  text-align: center;
-  margin-top: 8px;
-  font-size: 0.82rem;
-  color: var(--text-tertiary);
 }
 
 /* 4. Interactive Financial Toolkit (Calculators) */
@@ -3245,60 +3183,6 @@ section[id],
   font-size: 0.75rem;
   color: var(--color-green);
   font-weight: 700;
-}
-
-/* 8. Floating Quick-Action Island Dock */
-.quick-island-dock {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(14, 19, 31, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 6px 10px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(121, 64, 236, 0.15);
-  z-index: 990;
-  transition: transform 0.3s ease;
-}
-
-.dock-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: var(--radius-full);
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-
-.dock-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
-}
-
-.dock-item svg {
-  flex-shrink: 0;
-}
-
-@media (max-width: 600px) {
-  .quick-island-dock {
-    bottom: 16px;
-    padding: 4px 8px;
-  }
-  .dock-item span {
-    display: none;
-  }
-  .dock-item {
-    padding: 8px;
-  }
 }
 
 /* ==========================================================================
