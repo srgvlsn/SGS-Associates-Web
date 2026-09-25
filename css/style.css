@@ -1023,12 +1023,15 @@ section[id],
   background: rgba(20, 27, 45, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
-  padding: 18px 10px 16px;
+  padding: 18px 10px 14px;
   text-align: center;
   transition: all var(--transition-fast);
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
 }
 
 .calendar-card:hover {
@@ -1036,6 +1039,22 @@ section[id],
   border-color: var(--color-green);
   transform: translateY(-3px);
   box-shadow: 0 10px 24px rgba(0, 208, 108, 0.15);
+}
+
+.calendar-card.is-active-target {
+  background: rgba(14, 28, 48, 0.98);
+  border-color: var(--color-green);
+  box-shadow: 0 0 0 2px rgba(0, 208, 108, 0.45), 0 12px 28px rgba(0, 208, 108, 0.25);
+  transform: translateY(-4px);
+}
+
+.calendar-card.is-active-target .calendar-card-day {
+  text-shadow: 0 0 12px rgba(0, 208, 108, 0.6);
+}
+
+.due-countdown-banner.is-custom-target {
+  border-color: var(--color-green);
+  box-shadow: 0 0 24px rgba(0, 208, 108, 0.2);
 }
 
 .calendar-card-day {

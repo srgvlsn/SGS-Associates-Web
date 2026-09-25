@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'home') {
     initHeroParticles();
     initCounters();
-    renderCalendar();
     initDueCountdown();
     initCardSpotlight();
   } else if (page === 'services') {
@@ -833,50 +832,129 @@ function initDueCountdown() {
   const minsEl = document.getElementById('clock-mins');
   const secsEl = document.getElementById('clock-secs');
   const titleEl = document.getElementById('next-deadline-title');
+  const bannerEl = document.querySelector('.due-countdown-banner');
+
+  function getMonthTargets(year, month) {
+    const isQuarterMonth = [0, 3, 6, 9].includes(month); // Jan (Q3), Apr (Q4), Jul (Q1), Oct (Q2)
+    const targets = [
+      { day: 7, title: "TDS / TCS Monthly Deposit" },
+      { day: 11, title: "GSTR-1 Monthly Outward Supplies (Regular)" },
+      { day: 13, title: isQuarterMonth ? "GSTR-1 Quarterly Return (QRMP)" : "GSTR-1 / IFF Outward Supplies (QRMP)" },
+      { day: 15, title: "PF & ESIC Monthly Remittance" }
+    ];
+
+    if (isQuarterMonth) {
+      targets.push({ day: 18, title: "CMP-08 Quarterly Composition Statement" });
+    }
+
+    targets.push({ day: 20, title: "GSTR-3B Monthly Return & Tax Liability" });
+
+    if (isQuarterMonth) {
+      targets.push({ day: 22, title: "GSTR-3B Quarterly Return (QRMP)" });
+    }
+
+    return targets.map(t => ({
+      date: new Date(year, month, t.day, 23, 59, 59),
+      title: `${t.title} (${t.day}th)`
+    }));
+  }
 
   function getNextStatutoryDate() {
     const now = new Date();
     const currentYear = now.getFullYear();
-    const currentMonth = now.getMonth(); // 0-indexed
+    const currentMonth = now.getMonth();
 
-    // Statutory targets:
-    // 7th: TDS Deposit
-    // 11th: GSTR-1 (Regular)
-    // 13th: GSTR-1 / IFF (QRMP)
-    // 15th: PF & ESI
-    // 18th: CMP-08 Quarterly
-    // 20th: GSTR-3B (Regular)
-    // 22nd: GSTR-3B Quarterly (QRMP)
-    const targets = [
-      { day: 7, title: "TDS / TCS Monthly Deposit" },
-      { day: 11, title: "GSTR-1 Monthly Outward Supplies (Regular)" },
-      { day: 13, title: "GSTR-1 / IFF Outward Supplies (QRMP)" },
-      { day: 15, title: "PF & ESIC Monthly Remittance" },
-      { day: 18, title: "CMP-08 Quarterly Composition Statement" },
-      { day: 20, title: "GSTR-3B Monthly Return & Tax Liability" },
-      { day: 22, title: "GSTR-3B Quarterly Return (QRMP)" }
-    ];
-
-    for (let t of targets) {
-      const targetDate = new Date(currentYear, currentMonth, t.day, 23, 59, 59);
-      if (targetDate > now) {
-        return { date: targetDate, title: `${t.title} (${t.day}th)` };
+    // Check current month
+    const currentTargets = getMonthTargets(currentYear, currentMonth);
+    for (let t of currentTargets) {
+      if (t.date > now) {
+        return t;
       }
     }
 
-    // If passed all in current month, target the 7th of next month
-    const nextMonth = new Date(currentYear, currentMonth + 1, 7, 23, 59, 59);
-    return { date: nextMonth, title: "TDS / TCS Deposit (7th Next Month)" };
+    // Check next month
+    const nextDate = new Date(currentYear, currentMonth + 1, 1);
+    const nextTargets = getMonthTargets(nextDate.getFullYear(), nextDate.getMonth());
+    for (let t of nextTargets) {
+      if (t.date > now) {
+        return t;
+      }
+    }
+
+    // Fallback default
+    return { date: new Date(currentYear, currentMonth + 1, 7, 23, 59, 59), title: "TDS / TCS Monthly Deposit (7th)" };
   }
 
-  const nextDue = getNextStatutoryDate();
-  if (titleEl) {
-    titleEl.textContent = `Upcoming: ${nextDue.title}`;
+  function getCardStatutoryTarget(code) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+
+    if (code === 'tds') {
+      const d = new Date(year, month, 7, 23, 59, 59);
+      const target = d > now ? d : new Date(year, month + 1, 7, 23, 59, 59);
+      return { date: target, title: "TDS / TCS Monthly Deposit (7th)" };
+    }
+
+    if (code === 'gstr1') {
+      const d = new Date(year, month, 11, 23, 59, 59);
+      const target = d > now ? d : new Date(year, month + 1, 11, 23, 59, 59);
+      return { date: target, title: "GSTR-1 Monthly Outward Supplies (11th)" };
+    }
+
+    if (code === 'pfesi') {
+      const d = new Date(year, month, 15, 23, 59, 59);
+      const target = d > now ? d : new Date(year, month + 1, 15, 23, 59, 59);
+      return { date: target, title: "PF & ESIC Monthly Remittance (15th)" };
+    }
+
+    if (code === 'cmp08') {
+      const quarterDates = [
+        new Date(year, 0, 18, 23, 59, 59),
+        new Date(year, 3, 18, 23, 59, 59),
+        new Date(year, 6, 18, 23, 59, 59),
+        new Date(year, 9, 18, 23, 59, 59),
+        new Date(year + 1, 0, 18, 23, 59, 59)
+      ];
+      const target = quarterDates.find(d => d > now);
+      return { date: target, title: "CMP-08 Quarterly Composition Statement (18th)" };
+    }
+
+    if (code === 'gstr3b') {
+      const d = new Date(year, month, 20, 23, 59, 59);
+      const target = d > now ? d : new Date(year, month + 1, 20, 23, 59, 59);
+      return { date: target, title: "GSTR-3B Monthly Return & Tax Liability (20th)" };
+    }
+
+    if (code === 'itr') {
+      const itrDates = [
+        { date: new Date(year, 6, 31, 23, 59, 59), title: "ITR Filing (31st July - Non-Audit)" },
+        { date: new Date(year, 9, 31, 23, 59, 59), title: "ITR Filing (31st Oct - Tax Audit)" },
+        { date: new Date(year + 1, 6, 31, 23, 59, 59), title: "ITR Filing (31st July - Non-Audit)" }
+      ];
+      return itrDates.find(item => item.date > now) || itrDates[0];
+    }
+
+    if (code === 'annual') {
+      const annualDates = [
+        { date: new Date(year, 5, 30, 23, 59, 59), title: "GSTR-4 Composition Annual Return (30th June)" },
+        { date: new Date(year, 11, 31, 23, 59, 59), title: "GSTR-9 & 9C Regular Annual Return (31st Dec)" },
+        { date: new Date(year + 1, 5, 30, 23, 59, 59), title: "GSTR-4 Composition Annual Return (30th June)" }
+      ];
+      return annualDates.find(item => item.date > now) || annualDates[0];
+    }
+
+    return getNextStatutoryDate();
   }
+
+  let defaultDue = getNextStatutoryDate();
+  let currentDue = defaultDue;
+  let activeCardEl = null;
+  let autoRevertTimeout = null;
 
   function updateClock() {
     const now = new Date();
-    let diff = nextDue.date - now;
+    let diff = currentDue.date - now;
 
     if (diff <= 0) {
       diff = 0;
@@ -891,6 +969,81 @@ function initDueCountdown() {
     if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
     if (minsEl) minsEl.textContent = String(minutes).padStart(2, '0');
     if (secsEl) secsEl.textContent = String(seconds).padStart(2, '0');
+  }
+
+  function revertToDefault() {
+    if (autoRevertTimeout) {
+      clearTimeout(autoRevertTimeout);
+      autoRevertTimeout = null;
+    }
+    if (activeCardEl) {
+      activeCardEl.classList.remove('is-active-target');
+      activeCardEl = null;
+    }
+    currentDue = defaultDue;
+    if (titleEl) {
+      titleEl.textContent = `Upcoming: ${defaultDue.title}`;
+    }
+    if (bannerEl) {
+      bannerEl.classList.remove('is-custom-target');
+    }
+    updateClock();
+  }
+
+  function setCardTarget(card) {
+    const code = card.getAttribute('data-code');
+    if (!code) return;
+
+    if (autoRevertTimeout) {
+      clearTimeout(autoRevertTimeout);
+      autoRevertTimeout = null;
+    }
+
+    if (activeCardEl && activeCardEl !== card) {
+      activeCardEl.classList.remove('is-active-target');
+    }
+
+    activeCardEl = card;
+    activeCardEl.classList.add('is-active-target');
+
+    currentDue = getCardStatutoryTarget(code);
+    if (titleEl) {
+      titleEl.textContent = `Tracking: ${currentDue.title}`;
+    }
+    if (bannerEl) {
+      bannerEl.classList.add('is-custom-target');
+    }
+    updateClock();
+
+    // Auto-revert fallback for mobile/touch screens (10 seconds)
+    autoRevertTimeout = setTimeout(() => {
+      revertToDefault();
+    }, 10000);
+  }
+
+  // Bind interactive events on calendar cards
+  const cards = document.querySelectorAll('.calendar-card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      setCardTarget(card);
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (activeCardEl === card) {
+        revertToDefault();
+      }
+    });
+
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setCardTarget(card);
+      }
+    });
+  });
+
+  if (titleEl) {
+    titleEl.textContent = `Upcoming: ${defaultDue.title}`;
   }
 
   updateClock();
@@ -1036,7 +1189,7 @@ function renderCalendar() {
   if (!container) return;
 
   container.innerHTML = SGS_DATA.complianceCalendar.map(item => `
-    <div class="calendar-card interactive-glow-card">
+    <div class="calendar-card interactive-glow-card" data-code="${item.code}" role="button" tabindex="0" title="Track countdown for ${item.title}">
       <div class="calendar-card-day">${item.day}</div>
       <div class="calendar-card-month">${item.month}</div>
       <h4 class="calendar-card-title">${item.title}</h4>

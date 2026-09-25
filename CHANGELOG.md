@@ -2,7 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.0.0 - 2026-09-25 (v4.0)
+
+### Added & Enhanced
+- **Subpage Cross-Linking & Interconnected Site Architecture**:
+  - **Services Hub**: Added subpages navigation on [`services/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/index.html) linking directly to Statutory Due Dates and Financial Tools.
+  - **Due Dates & Tools Subpages**: Added reciprocal back links to the main Services directory as well as subpage-to-subpage cross links between [`services/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html) and [`services/financial-tools/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/financial-tools/index.html).
+  - **Firm Hub**: Added reciprocal cross-links between [`firm/about/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html) and [`firm/careers/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/careers/index.html), plus navigation pathways to Client Stories, Branch Locator, and Services.
+- **Career Callout on About Us Page**:
+  - Integrated high-visibility *"Looking for a career in accounting?"* callout banner with a *"Join our team"* fast-action button leading to the Careers portal on [`firm/about/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html).
+- **Homepage Statutory Deadline Section Streamlined**:
+  - Removed compliance calendar cards from the homepage (`index.html`) to declutter the layout while keeping the live countdown banner ticker and "View Full Calendar" portal link fully functional.
+  - Dedicated full interactive calendar cards and table remain accessible on [`services/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html).
+- **GST Service Card Scope Expanded**:
+  - Updated GST service card features in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js) to explicitly highlight Composition Scheme filing in pointer 1 and GSTR-4 annual return in pointer 3.
+- **Financial Toolkit GST Slab Calculator Modernized**:
+  - Replaced legacy 12% and 28% slab buttons with 3% (*Gold / Special*) and 40% (*Luxury / Demerit*) rates in [`services/financial-tools/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/financial-tools/index.html).
+- **Compliance Cards Design Streamlined**:
+  - Removed redundant *"Click to track"* hint text from the compliance calendar cards on [`services/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html) for a cleaner, modern look while preserving complete click-to-track countdown functionality.
+
 ## 3.1.0 - 2026-09-23 (v3.1)
+
+### Added & Enhanced
+- **Interactive Click-to-Track Statutory Countdown Timer**:
+  - Upgraded statutory countdown ticker on Homepage and [`services/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html) to support dynamic deadline tracking on card click.
+  - Clicking any compliance calendar card locks the countdown banner to that specific statutory deadline with `is-active-target` emerald glow highlighting and real-time days/hours/minutes/seconds countdown.
+  - Smoothly reverts to the nearest default statutory deadline when mouse pointer leaves the card (`mouseleave`) on desktop, or automatically after a 10-second timeout for mobile/touchscreen visitors.
+  - Added full keyboard accessibility (`Enter` / `Space`) and streamlined card design (removed redundant "Click to track" labels).
+- **Statutory Calendar Accuracy Corrections**:
+  - Corrected CMP-08 composition scheme statement frequency from monthly to quarterly (18th of Apr, Jul, Oct, Jan) in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js), and [`services/due-dates/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html).
+  - Synchronized GSTR-3B (QRMP) 22nd quarterly deadline calculations.
 
 ### Removed & Cleaned
 - **Repository Structure & Stub File Elimination**:

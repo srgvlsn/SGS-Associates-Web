@@ -103,9 +103,9 @@ const SGS_DATA = {
       title: "GST Registration, Returns & Audits",
       shortDesc: "Comprehensive Goods & Services Tax solutions covering new registration, monthly/quarterly filings, reconciliation, and statutory audits.",
       features: [
-        "GSTR-1, GSTR-3B, and QRMP scheme filing",
+        "GSTR-1, GSTR-3B, Composition Scheme, and QRMP scheme filing",
         "ITC reconciliation with GSTR-2B to avoid tax loss",
-        "Annual Return (GSTR-9) and Reconciliation (GSTR-9C)",
+        "Annual Return (GSTR-9 / GSTR-4) and Reconciliation (GSTR-9C)",
         "E-Way Bills and E-Invoicing setup"
       ],
       icon: "percent"
@@ -394,7 +394,7 @@ const SGS_DATA = {
       day: "18", 
       month: "Quarterly", 
       title: "CMP-08 Filing", 
-      desc: "Composition filing due date & quarterly statement payment", 
+      desc: "18th after quarter end (Apr, Jul, Oct, Jan) for Composition Scheme", 
       code: "cmp08" 
     },
     { 
