@@ -20,7 +20,7 @@ const SGS_DATA = {
     inquiryEndpoint: "", // Paste your Google Apps Script Web App URL here to enable Google Sheets & Email dispatch
     workingHours: "Mon - Sat: 9:30 AM - 6:00 PM",
     stats: [
-      { label: "Branch Offices", value: "6", suffix: "" },
+      { label: "Branch Offices", value: "3", suffix: "" },
       { label: "Core Practice Areas", value: "18", suffix: "+" },
       { label: "Compliance Rate", value: "100", suffix: "%" },
       { label: "Satisfied Clients", value: "1,500", suffix: "+" }
@@ -297,7 +297,9 @@ const SGS_DATA = {
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Cherai+Ernakulam+Kerala"
-    },
+    }
+    /* Non-physical service regions (served remotely / on-client-site without a dedicated walk-in branch; retained for future physical branch expansion)
+    ,
     {
       id: "perumbavoor",
       name: "Perumbavoor, Ernakulam",
@@ -337,12 +339,20 @@ const SGS_DATA = {
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Adimali+Idukki+Kerala+685561"
     }
+    */
+  ],
+
+  // Active regions served without a physical walk-in office
+  serviceRegionsServed: [
+    "Kaloor, Ernakulam",
+    "Perumbavoor, Ernakulam",
+    "Adimali, Idukki"
   ],
 
   careers: {
     badge: "WE ARE HIRING!",
     title: "Join Our Growing Team",
-    headline: "Excited to announce the opening of our new branches and looking for passionate Trainees to grow with us!",
+    headline: "Excited to announce openings across our branch offices and looking for passionate Trainees to grow with us!",
     requirements: [
       { text: "Freshers / Trainees welcome", icon: "check-circle" },
       { text: "Prior experience is NOT mandatory", icon: "check-circle" },
@@ -352,10 +362,12 @@ const SGS_DATA = {
     branchesHiring: [
       "North Paravur, Ernakulam",
       "Kodungallur, Thrissur",
-      "Cherai, Ernakulam",
-      "Perumbavoor, Ernakulam",
-      "Kaloor, Ernakulam",
-      "Adimali, Idukki"
+      "Cherai, Ernakulam"
+      /* Future branch hiring locations:
+      , "Perumbavoor, Ernakulam"
+      , "Kaloor, Ernakulam"
+      , "Adimali, Idukki"
+      */
     ],
     trainingAreas: [
       "Practical GST & Income Tax e-Filing",

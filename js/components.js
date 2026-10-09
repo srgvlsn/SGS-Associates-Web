@@ -259,9 +259,9 @@ const SGS_COMPONENTS = {
                     </svg>
                   </div>
                   <div class="method-details">
-                    <h5>Head Office &amp; 6 Regional Hubs</h5>
+                    <h5>Head Office &amp; Regional Branches</h5>
                     <p style="color: #fff; font-weight: 600; margin: 0;">Vyapara Bhavan Complex, North Paravur</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Branches in Kodungallur, Cherai, Perumbavoor, Kaloor &amp; Adimali</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Offices in Kodungallur &amp; Cherai | Serving Kaloor, Perumbavoor &amp; Adimali</p>
                   </div>
                 </div>
               </div>
@@ -337,9 +337,12 @@ const SGS_COMPONENTS = {
                     <option value="North Paravur, Ernakulam">North Paravur, Ernakulam (Head Office)</option>
                     <option value="Kodungallur, Thrissur">Kodungallur, Thrissur</option>
                     <option value="Cherai, Ernakulam">Cherai, Ernakulam</option>
+                    <!-- Non-physical service regions retained for future physical branch expansion:
                     <option value="Perumbavoor, Ernakulam">Perumbavoor, Ernakulam</option>
                     <option value="Kaloor, Ernakulam">Kaloor, Ernakulam</option>
                     <option value="Adimali, Idukki">Adimali, Idukki</option>
+                    -->
+                    <option value="Other Locations (Kaloor, Perumbavoor, Adimali &amp; across Kerala)">Other Locations (Kaloor, Perumbavoor, Adimali &amp; Statewide)</option>
                   </select>
                 </div>
 
@@ -442,7 +445,7 @@ const SGS_COMPONENTS = {
                 <li><a href="${root}clients/">Clients &amp; Case Studies</a></li>
                 <li><a href="${root}firm/about/">About Firm &amp; Pillars</a></li>
                 <li><a href="${root}firm/careers/">Careers &amp; Articleship</a></li>
-                <li><a href="${root}contact/">Contact &amp; 6 Branches</a></li>
+                <li><a href="${root}contact/">Contact &amp; Branches</a></li>
               </ul>
             </div>
 
@@ -467,7 +470,11 @@ const SGS_COMPONENTS = {
                 <li><strong>Helpline:</strong> <a href="tel:9947144568">9947144568</a> / <a href="tel:9847365124">9847365124</a></li>
                 <li><strong>Email:</strong> <a href="mailto:tax.sgs@gmail.com">tax.sgs@gmail.com</a></li>
                 <li><strong>Working Hours:</strong> Mon - Sat: 9:30 AM - 6:00 PM</li>
+                <li><strong>Offices:</strong> North Paravur (HO), Kodungallur, Cherai</li>
+                <li><strong>Also Serving:</strong> Kaloor, Perumbavoor, Adimali &amp; Statewide</li>
+                <!-- Legacy 6-branch network string retained for future physical branch expansion:
                 <li><strong>Branch Network:</strong> Kodungallur, Cherai, Perumbavoor, Kaloor, Adimali</li>
+                -->
               </ul>
             </div>
           </div>

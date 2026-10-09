@@ -2,9 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.1.0 - 2026-10-09 (v4.1)
+## 4.2.0 - 2026-10-09 (v4.2)
 
-### Added & Enhanced
+- **Branch Network & Service Reach Data Harmonization**:
+  - Clarified physical walk-in branch offices (**North Paravur (HO)**, **Kodungallur**, and **Cherai**) across [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js), [`contact/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/contact/index.html), and site headers/footers.
+  - Formally categorized **Kaloor**, **Perumbavoor**, and **Adimali** as active service coverage locations (served without a physical walk-in branch), while cleanly preserving and commenting out their configuration code blocks for future physical branch expansions as requested.
+- **Obsidian Black Theme & Contrast Optimization**:
+  - Replaced legacy dark navy background hues (`#080B11` / `#0E131F` / `#141B2D`) across the global design system with an ultra-deep Obsidian Black palette (`--bg-dark-base: #03060A`, `--bg-dark-surface: #060910`, `--bg-dark-card: #090E17`) in [`css/variables.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/variables.css) and [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css).
+  - Maximized visual contrast, clarity, and chromatic vibrancy for brand neon greens (`#00D06C`) and electric purples (`#7940EC`).
+- **Apple iOS 26.1 Liquid Glassmorphism & Continuous Squircle Architecture**:
+  - Engineered ultra-refined liquid glass surfaces with dual-layer specular rim highlights (`inset 0 1.5px 1.5px rgba(255,255,255,0.45)`), deep optical blur filters (`--glass-blur-sm/md/lg`), and continuous-curvature squircle radii tokens (`--radius-squircle-xs` to `--radius-squircle-xl`).
+  - Upgraded all interactive site buttons (`.btn`, `.btn-primary`, `.btn-secondary`, `.btn-green`, `.whatsapp-fast-btn`) with responsive tactile press physics (`:active { transform: scale(0.97); }`) and luminous refraction glows.
+  - Upgraded Pre-Footer Consultation Section (cards, badges, inquiry form container, inputs/selects/textareas) and navigation dropdowns with enhanced liquid opacity and emerald focus glow rings.
 - **Floating Quick Navigation Buttons (Scroll Up & Contact Anchor)**:
   - Added sleek, glassmorphic floating action buttons docked at the bottom-right across all pages via [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) and [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css).
   - Features an intuitive **Scroll to Top** button with automatic scroll-depth detection (smoothly reveals after scrolling 250px) and a direct **Contact Us** anchor button that smoothly scrolls to the page's consultation form and focuses the first input.
