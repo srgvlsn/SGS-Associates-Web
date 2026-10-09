@@ -78,12 +78,12 @@ const SGS_COMPONENTS = {
 
             <!-- Services Dropdown (Stacked with Services, Due Dates & Financial Tools) -->
             <div class="nav-dropdown">
-              <a href="${root}services/" class="nav-link nav-dropdown-toggle ${isServicesActive}">
+              <a href="${root}services-page/" class="nav-link nav-dropdown-toggle ${isServicesActive}">
                 <span>Services</span>
                 <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
               </a>
               <div class="nav-dropdown-menu">
-                <a href="${root}services/" class="dropdown-item">
+                <a href="${root}services-page/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
                   </div>
@@ -92,7 +92,7 @@ const SGS_COMPONENTS = {
                     <span>MCA, GST, Audits, PF &amp; Appeals</span>
                   </div>
                 </a>
-                <a href="${root}services/due-dates/" class="dropdown-item">
+                <a href="${root}services-page/due-dates/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                   </div>
@@ -101,7 +101,7 @@ const SGS_COMPONENTS = {
                     <span>Live Countdown &amp; Tax Deadlines</span>
                   </div>
                 </a>
-                <a href="${root}services/financial-tools/" class="dropdown-item">
+                <a href="${root}services-page/financial-tools/" class="dropdown-item">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/></svg>
                   </div>
@@ -186,9 +186,9 @@ const SGS_COMPONENTS = {
         </div>
         <div class="mobile-drawer-nav">
           <a href="${root}" class="mobile-drawer-link ${isActive('home')}">Home</a>
-          <a href="${root}services/" class="mobile-drawer-link ${isActive('services')}">Services (18+ Areas)</a>
-          <a href="${root}services/due-dates/" class="mobile-drawer-link ${isActive('due-dates')}">Statutory Due Dates &amp; Calendar</a>
-          <a href="${root}services/financial-tools/" class="mobile-drawer-link ${isActive('tools')}">Financial Tools &amp; Calculators</a>
+          <a href="${root}services-page/" class="mobile-drawer-link ${isActive('services')}">Services (18+ Areas)</a>
+          <a href="${root}services-page/due-dates/" class="mobile-drawer-link ${isActive('due-dates')}">Statutory Due Dates &amp; Calendar</a>
+          <a href="${root}services-page/financial-tools/" class="mobile-drawer-link ${isActive('tools')}">Financial Tools &amp; Calculators</a>
           <a href="${root}clients/" class="mobile-drawer-link ${isActive('clients')}">Clients &amp; Success Stories</a>
           <a href="${root}firm/about/" class="mobile-drawer-link ${isActive('about')}">About Us</a>
           <a href="${root}firm/careers/" class="mobile-drawer-link ${isActive('careers')}">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
@@ -436,9 +436,9 @@ const SGS_COMPONENTS = {
               <h4 class="footer-heading">Pages</h4>
               <ul class="footer-links-list">
                 <li><a href="${root}">Home</a></li>
-                <li><a href="${root}services/">All 18+ Services</a></li>
-                <li><a href="${root}services/due-dates/">Compliance Due Dates</a></li>
-                <li><a href="${root}services/financial-tools/">Financial Tools &amp; Calculators</a></li>
+                <li><a href="${root}services-page/">All 18+ Services</a></li>
+                <li><a href="${root}services-page/due-dates/">Compliance Due Dates</a></li>
+                <li><a href="${root}services-page/financial-tools/">Financial Tools &amp; Calculators</a></li>
                 <li><a href="${root}clients/">Clients &amp; Case Studies</a></li>
                 <li><a href="${root}firm/about/">About Firm &amp; Pillars</a></li>
                 <li><a href="${root}firm/careers/">Careers &amp; Articleship</a></li>
@@ -450,12 +450,12 @@ const SGS_COMPONENTS = {
             <div>
               <h4 class="footer-heading">Core Practice</h4>
               <ul class="footer-links-list">
-                <li><a href="${root}services/">Company &amp; LLP Registration</a></li>
-                <li><a href="${root}services/">Income Tax Filing &amp; Audit</a></li>
-                <li><a href="${root}services/">GST Returns &amp; Reconciliations</a></li>
-                <li><a href="${root}services/">Bookkeeping &amp; Accounting</a></li>
-                <li><a href="${root}services/">Bank Project Reports (CMA)</a></li>
-                <li><a href="${root}services/">PF &amp; ESI Labour Law</a></li>
+                <li><a href="${root}services-page/">Company &amp; LLP Registration</a></li>
+                <li><a href="${root}services-page/">Income Tax Filing &amp; Audit</a></li>
+                <li><a href="${root}services-page/">GST Returns &amp; Reconciliations</a></li>
+                <li><a href="${root}services-page/">Bookkeeping &amp; Accounting</a></li>
+                <li><a href="${root}services-page/">Bank Project Reports (CMA)</a></li>
+                <li><a href="${root}services-page/">PF &amp; ESI Labour Law</a></li>
               </ul>
             </div>
 
@@ -477,7 +477,7 @@ const SGS_COMPONENTS = {
             <div class="footer-bottom-links">
               <a href="${root}contact/">Privacy &amp; Terms</a>
               <span>•</span>
-              <a href="${root}services/due-dates/">Tax Calendar</a>
+              <a href="${root}services-page/due-dates/">Tax Calendar</a>
               <span>•</span>
               <a href="${root}contact/">Branch Locator</a>
             </div>
