@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 4.2.0 - 2026-10-09 (v4.2)
+## 4.2.1 - 2026-10-09 (v4.2.1)
 
 - **Branch Network & Service Reach Data Harmonization**:
   - Clarified physical walk-in branch offices (**North Paravur (HO)**, **Kodungallur**, and **Cherai**) across [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js), [`contact/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/contact/index.html), and site headers/footers.
@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - **Floating Quick Navigation Buttons (Scroll Up & Contact Anchor)**:
   - Added sleek, glassmorphic floating action buttons docked at the bottom-right across all pages via [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) and [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css).
   - Features an intuitive **Scroll to Top** button with automatic scroll-depth detection (smoothly reveals after scrolling 250px) and a direct **Contact Us** anchor button that smoothly scrolls to the page's consultation form and focuses the first input.
-  - Complete with desktop hover micro-tooltips, emerald glow transitions, and responsive mobile adaptations.
+  - Complete with desktop hover micro-tooltips, emerald glow transitions, responsive mobile adaptations, and eliminated default square mobile tap/touch highlights (`-webkit-tap-highlight-color: transparent`, `outline: none`, `touch-action: manipulation`).
 - **Service Category Filtering Optimization**:
   - Enhanced `renderServices()` in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js) so the *"Labour & Legal"* filter tab seamlessly aggregates both Labour Law (`labour`) and Legal Appeals (`legal`) service portfolios.
 

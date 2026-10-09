@@ -17,6 +17,7 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
   overflow-x: clip;
 }
 
@@ -84,6 +85,7 @@ ul {
 }
 
 button,
+a,
 input,
 select,
 textarea {
@@ -91,11 +93,24 @@ textarea {
   font-size: inherit;
   border: none;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
   cursor: pointer;
   background: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:focus,
+button:focus-visible,
+a:focus,
+a:focus-visible {
+  outline: none;
 }
 
 /* Typography Helpers */
@@ -3683,6 +3698,18 @@ section[id],
   position: relative;
   text-decoration: none;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--glass-shadow-floating);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  touch-action: manipulation;
+}
+
+.floating-btn:focus,
+.floating-btn:focus-visible {
+  outline: none;
   box-shadow: var(--glass-shadow-floating);
 }
 
