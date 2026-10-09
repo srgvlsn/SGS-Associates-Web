@@ -488,6 +488,31 @@ const SGS_COMPONENTS = {
   },
 
   /**
+   * Render Floating Action Buttons (Scroll Up & Contact Anchor)
+   */
+  getFloatingActionsHTML() {
+    return `
+      <div id="floating-actions" class="floating-actions-dock" aria-label="Page quick navigation">
+        <!-- Navigate to Contact Section on current page -->
+        <a href="#contact" id="floating-contact-btn" class="floating-btn floating-btn-contact" title="Contact Us" aria-label="Navigate to Contact Us section">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="floating-btn-tooltip">Contact Us</span>
+        </a>
+
+        <!-- Scroll to Top Button -->
+        <button type="button" id="floating-scroll-top-btn" class="floating-btn floating-btn-top" title="Scroll to Top" aria-label="Scroll to top of page">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+          </svg>
+          <span class="floating-btn-tooltip">Scroll to Top</span>
+        </button>
+      </div>
+    `;
+  },
+
+  /**
    * Initializes all shared components on any page
    * @param {string} activePage
    */
@@ -520,6 +545,14 @@ const SGS_COMPONENTS = {
     const footerContainer = document.getElementById('footer-placeholder');
     if (footerContainer) {
       footerContainer.outerHTML = this.getFooterHTML();
+    }
+
+    // 6. Floating Action Buttons (Scroll to Top & Contact Navigation)
+    const floatingPlaceholder = document.getElementById('floating-actions-placeholder');
+    if (floatingPlaceholder) {
+      floatingPlaceholder.outerHTML = this.getFloatingActionsHTML();
+    } else if (!document.getElementById('floating-actions')) {
+      document.body.insertAdjacentHTML('beforeend', this.getFloatingActionsHTML());
     }
   }
 };

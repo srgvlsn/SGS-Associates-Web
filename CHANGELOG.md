@@ -2,11 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.1.0 - 2026-10-09 (v4.1)
+
+### Added & Enhanced
+- **Floating Quick Navigation Buttons (Scroll Up & Contact Anchor)**:
+  - Added sleek, glassmorphic floating action buttons docked at the bottom-right across all pages via [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) and [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css).
+  - Features an intuitive **Scroll to Top** button with automatic scroll-depth detection (smoothly reveals after scrolling 250px) and a direct **Contact Us** anchor button that smoothly scrolls to the page's consultation form and focuses the first input.
+  - Complete with desktop hover micro-tooltips, emerald glow transitions, and responsive mobile adaptations.
+- **Service Category Filtering Optimization**:
+  - Enhanced `renderServices()` in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js) so the *"Labour & Legal"* filter tab seamlessly aggregates both Labour Law (`labour`) and Legal Appeals (`legal`) service portfolios.
+
+## 4.0.1 - 2026-10-09 (v4.0.1)
+
+### Changed & Refactored
+- **Directory Structure Update (`services` $\rightarrow$ `services-page`)**:
+  - Renamed the `services/` directory to `services-page/` and synchronized all navigation dropdowns, mobile drawer links, hero buttons, cross-hub cards, and footer links across the site.
+- **Firm & Practice Navigation Harmonization**:
+  - Updated section headings and layout hierarchy on [`firm/about/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html) to provide direct pathways to practice areas, careers, client case studies, and branch locations.
+
 ## 4.0.0 - 2026-09-25 (v4.0)
 
 ### Added & Enhanced
-- **Directory Structure Update (`services` $\rightarrow$ `services-page`)**:
-  - Renamed the `services/` directory to `services-page/` and updated all navigation dropdowns, mobile drawer links, hero buttons, and footer links across the site.
 - **Subpage Cross-Linking & Interconnected Site Architecture**:
   - **Services Hub**: Added subpages navigation on [`services-page/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/index.html) linking directly to Statutory Due Dates and Financial Tools.
   - **Due Dates & Tools Subpages**: Added reciprocal back links to the main Services directory as well as subpage-to-subpage cross links between [`services-page/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/due-dates/index.html) and [`services-page/financial-tools/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/financial-tools/index.html).
@@ -27,12 +43,12 @@ All notable changes to this project will be documented in this file.
 
 ### Added & Enhanced
 - **Interactive Click-to-Track Statutory Countdown Timer**:
-  - Upgraded statutory countdown ticker on Homepage and [`services/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html) to support dynamic deadline tracking on card click.
+  - Upgraded statutory countdown ticker on Homepage and [`services-page/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/due-dates/index.html) to support dynamic deadline tracking on card click.
   - Clicking any compliance calendar card locks the countdown banner to that specific statutory deadline with `is-active-target` emerald glow highlighting and real-time days/hours/minutes/seconds countdown.
   - Smoothly reverts to the nearest default statutory deadline when mouse pointer leaves the card (`mouseleave`) on desktop, or automatically after a 10-second timeout for mobile/touchscreen visitors.
   - Added full keyboard accessibility (`Enter` / `Space`) and streamlined card design (removed redundant "Click to track" labels).
 - **Statutory Calendar Accuracy Corrections**:
-  - Corrected CMP-08 composition scheme statement frequency from monthly to quarterly (18th of Apr, Jul, Oct, Jan) in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js), and [`services/due-dates/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services/due-dates/index.html).
+  - Corrected CMP-08 composition scheme statement frequency from monthly to quarterly (18th of Apr, Jul, Oct, Jan) in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js), and [`services-page/due-dates/`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/due-dates/index.html).
   - Synchronized GSTR-3B (QRMP) 22nd quarterly deadline calculations.
 
 ### Removed & Cleaned

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileDrawer();
   initContactForm();
+  initFloatingActions();
 
   // Page-specific initializers
   if (page === 'home') {
@@ -304,7 +305,11 @@ function renderServices(selectedCategory = 'all', searchQuery = '') {
   let filtered = SGS_DATA.services;
 
   if (currentCategory !== 'all') {
-    filtered = filtered.filter(s => s.category === currentCategory);
+    if (currentCategory === 'labour') {
+      filtered = filtered.filter(s => s.category === 'labour' || s.category === 'legal');
+    } else {
+      filtered = filtered.filter(s => s.category === currentCategory);
+    }
   }
 
   if (currentSearchQuery) {
@@ -1440,4 +1445,51 @@ function initMobileDrawer() {
   drawerLinks.forEach(link => {
     link.addEventListener('click', closeDrawer);
   });
+}
+
+/* ==========================================================================
+   14. FLOATING ACTION BUTTONS (SCROLL TO TOP & CONTACT ANCHOR)
+   ========================================================================== */
+function initFloatingActions() {
+  const scrollTopBtn = document.getElementById('floating-scroll-top-btn');
+  const contactBtn = document.getElementById('floating-contact-btn');
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  if (contactBtn) {
+    contactBtn.addEventListener('click', (e) => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        e.preventDefault();
+        contactSection.scrollIntoView({
+          behavior: 'smooth'
+        });
+        const nameInput = document.getElementById('consultation-name');
+        if (nameInput) {
+          setTimeout(() => nameInput.focus(), 500);
+        }
+      }
+    });
+  }
+
+  function handleScroll() {
+    const scrollY = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTopBtn) {
+      if (scrollY > 250) {
+        scrollTopBtn.classList.add('is-visible');
+      } else {
+        scrollTopBtn.classList.remove('is-visible');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 }
