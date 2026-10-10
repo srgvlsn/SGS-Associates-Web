@@ -176,7 +176,9 @@ const SGS_COMPONENTS = {
       <div id="mobile-drawer-overlay" class="mobile-drawer-overlay"></div>
       <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
-          <img src="${root}assets/icons/LOGO.png" alt="SGS Associates" style="height: 38px;">
+          <a href="${root}" title="SGS Associates Homepage">
+            <img src="${root}assets/icons/LOGO_favicon.png" alt="SGS Associates" style="height: 40px; width: auto; display: block;">
+          </a>
           <button id="mobile-drawer-close" aria-label="Close navigation" style="background: transparent; border: none; color: #fff; cursor: pointer; padding: 4px;">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -192,7 +194,7 @@ const SGS_COMPONENTS = {
           <a href="${root}clients/" class="mobile-drawer-link ${isActive('clients')}">Clients &amp; Success Stories</a>
           <a href="${root}firm/about/" class="mobile-drawer-link ${isActive('about')}">About Us</a>
           <a href="${root}firm/careers/" class="mobile-drawer-link ${isActive('careers')}">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
-          <a href="${root}contact/" class="mobile-drawer-link ${isActive('contact')}">Contact &amp; 6 Kerala Branches</a>
+          <a href="${root}contact/" class="mobile-drawer-link ${isActive('contact')}">Contact &amp; Branches</a>
         </div>
         <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--bg-dark-border);">
           <a href="#contact" class="btn btn-primary mobile-drawer-link" style="width: 100%; margin-bottom: 12px; text-align: center;">Book Consultation</a>
