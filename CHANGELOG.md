@@ -2,12 +2,55 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.0 - 2026-10-26 (v4.3.0)
+
+- **Buttery-Smooth Client-Side SPA Navigation & View Transitions Engine**:
+  - **Speculative Hover & Touch Prefetching**: Engineered custom in-memory caching engine in [`js/router.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/router.js) that intercepts `pointerenter` and `touchstart` events to pre-fetch target pages into RAM ~150–250ms before the click finishes, achieving true **0 ms perceived network latency**.
+  - **Idle Route Pre-loading**: Automatically loads core site sections (`services-page/`, `due-dates/`, `financial-tools/`, `clients/`, `firm/about/`, `contact/`) in the background via `requestIdleCallback` after initial page paint.
+  - **Stationary App Shell with Native View Transitions**:
+    - Isolated `.header` (`sgs-header`), `.top-bar` (`sgs-topbar`), and `#main-content` (`sgs-main`) using browser View Transitions (`document.startViewTransition`).
+    - The top navbar, brand logo, mobile drawer, and footer stay permanently mounted in memory with zero blinking, flashing, or unmounting.
+    - Swaps `<main id="main-content">` with hardware-accelerated Apple-grade liquid crossfade and micro-lift easing (`cubic-bezier(0.16, 1, 0.3, 1)`).
+    - Includes GPU-accelerated CSS opacity and transform fallback for browsers without native View Transitions support.
+  - **Luminous Micro-Progress Pulse Bar**:
+    - Added a sleek 2.5px glowing hairline progress bar (`#sgs-router-bar`) at the top of the viewport in [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css) featuring an emerald-to-lavender gradient and luminous blur.
+  - **Modular Page Lifecycle Hooks & Memory Hygiene**:
+    - Refactored [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js) to export `window.SGS_MAIN` with `initPage()` and `cleanupPage()`, ensuring clean cancellation of particle animation frames and countdown intervals upon leaving pages.
+    - Added `window.SGS_COMPONENTS.updateActiveNav()` to seamlessly animate the active indicator underline and dropdown selections without destroying header DOM.
+    - Idempotent consultation form binding and query param pre-filling (`?service=...`).
+  - **Browser History & Anchors**:
+    - Full `popstate` support for silky Back and Forward button glides, plus smooth intra-page `#contact` anchor scrolling without unnecessary re-renders.
+- **Navigation Selection Highlight & Dropdown Alignment Polish**:
+  - **Precision Text Span Anchoring**: Separated text labels into `<span>` wrappers in [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) and anchored the active underline (`.nav-link span::after`) strictly to the text itself in [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css), completely eliminating horizontal offset caused by dropdown chevron accessory SVGs and flex gaps.
+  - **High-Luminance Gradient & Glow**: Upgraded the active indicator gradient to `#c084fc` -> `var(--color-green-light)` -> `var(--color-green)` with dual-tone luminous shadows (`rgba(0, 208, 108, 0.85)` and `rgba(192, 132, 252, 0.65)`), guaranteeing uniform, unbroken brightness against dark backgrounds from pixel 0 to the end.
+  - **Dropdown Stabilization & Subpage Active States**: Removed jarring `translateX(3px)` hover shifts from `.dropdown-item`, added subtle icon scaling (`scale(1.06)`), and integrated `isSubpageActive()` to highlight the currently viewed service or firm subpage with liquid glass backdrops.
+- **Apple iOS Squircle Liquid Glass Architecture (Site-Wide)**:
+  - Extracted the physical optical properties from the degree-6 superellipse squircle shader and applied them across all round-cornered rectangles throughout the entire website:
+    - **Continuous-Curvature Squircles**: Continuous superellipse radii tokens (`--radius-squircle-xs` to `--radius-squircle-xl`) mapped to all cards, inputs, pills, chips, and buttons. Eliminated all hardcoded pixel radii across stylesheets.
+    - **3-Tier Razor Specular Bevel Rims (`rb2` + `rb3`)**: Razor-sharp 1px top highlight (`inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.40)`), subsurface rim (`inset 0 0 0 1px rgba(255, 255, 255, 0.06)`), and obsidian bottom grounding shadow (`inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35)`).
+    - **Unified Multi-Layer Background Glare Sheen**: Layered specular lens gradients (`var(--glass-lens-specular)`) directly onto `.feature-box`, `.service-card`, `.toolkit-card`, `.calendar-banner`, `.calendar-card`, `.branch-card`, `.inquiry-form-card`, `.contact-method-card`, `.stories-showcase`, `.modal-box`, `.cip-block`, `.careers-card`, `.results-summary-card`, `.compliance-table-card`, `.submission-success-card`, and `.interactive-glow-card`.
+    - **Frosted Liquid Form Controls**: Refined inputs, selects, and textareas into inset frosted squircle panels with deep optical blur and glowing focus rings.
+    - **Refined Search Bar & Pills**: Elevated `.service-search-box`, filter tabs, toolkit preset chips, and countdown clock units with dual-bevel specular highlights.
+- **Site-Wide Visual Consistency Audit & Polish**:
+  - **Eliminated Conflicting Inline Overrides**: Replaced legacy inline `var(--bg-dark-card)` linear gradients on `.page-callout-card` in [`firm/about/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html) and [`contact/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/contact/index.html) with modular `.callout-green` and `.callout-purple` classes featuring emerald/purple rim glows.
+  - **Standardized Grid Containers**: Replaced ad-hoc inline grid style declarations across [`services-page/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/index.html), [`services-page/financial-tools/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/financial-tools/index.html), [`services-page/due-dates/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/services-page/due-dates/index.html), [`firm/about/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html), and [`firm/careers/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/careers/index.html) with the canonical `.home-teaser-grid` class.
+  - **Tokenized Backgrounds**: Replaced all hardcoded hex backgrounds (`#04070D`, `#060910`, `#05070B`) in `.features-section`, `.calendar-section`, `.toolkit-section`, `.stories-section`, and `.footer` with design tokens `var(--bg-dark-base)` and `var(--bg-dark-surface)`.
+  - **Deduplicated CSS Selectors**: Cleaned up duplicated card selector definitions in [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css) into a unified liquid glass container rule.
+  - **Micro-Element Harmonization**: Upgraded `.nav-badge-hiring`, `.badge-mini`, `.regime-tag`, `.story-metric-badge`, `.custom-range-slider`, `.ratio-progress-bar`, `.rate-chip`, and `.clock-unit` to squircle and pill tokens.
+  - **Empty Search Results State**: Upgraded dynamic empty search fallback in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js) to liquid glass styling with specular rim and squircle curvature.
+- **Hero Canvas Streamlining**:
+  - Removed the cursor squircle lens bubble from `#hero-particles-canvas` in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js) and reset opacity to `0.55` in [`css/style.css`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/css/style.css), restoring the sleek, distraction-free interactive particle constellation ambient network.
+
 ## 4.2.2 - 2026-10-10 (v4.2.2)
 
 - **Mobile Navigation Drawer Emblem Logo**:
   - Replaced the horizontal full text logo with the clean, icon-only monogram brand emblem ([`assets/icons/LOGO_favicon.png`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/assets/icons/LOGO_favicon.png)) in the slide-in mobile navigation drawer ([`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js)), creating a streamlined header layout for mobile screens.
   - Synchronized mobile drawer navigation contact link to "Contact & Branches".
-
+- **Client Stories Removal (Preserved in Codebase)**:
+  - Removed client success stories and case study showcases from the live site while cleanly preserving the full data objects and rendering logic in comments across [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js), and [`clients/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/clients/index.html) for future reactivation.
+  - Re-anchored navigation links and cross-hub cards on [`firm/about/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/about/index.html) and [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) to *"Clientele"*.
+- **Clientele Heading & Navigation Label Harmonization**:
+  - Replaced the top navbar link, mobile drawer heading, footer link, and breadcrumbs from *"Clients"* to *"Clientele"*.
 ## 4.2.1 - 2026-10-09 (v4.2.1)
 
 - **Mobile Tap Selection Highlight Elimination**:

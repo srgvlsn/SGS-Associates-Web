@@ -432,7 +432,8 @@ const SGS_DATA = {
     }
   ],
 
-  // Client Success Stories & Case Highlights
+  // Client Success Stories & Case Highlights (Commented out for future use)
+  /*
   clientStories: [
     {
       id: "manufacturing",
@@ -475,6 +476,7 @@ const SGS_DATA = {
       badge: "Complete Repatriation"
     }
   ],
+  */
 
   // Interactive Compliance Navigator Questions & Mappings
   navigatorQuiz: {

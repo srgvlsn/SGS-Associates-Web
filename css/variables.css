@@ -58,12 +58,12 @@
   --shadow-glow-purple: 0 0 35px rgba(var(--color-purple-rgb), 0.3);
   --shadow-glow-green: 0 0 35px rgba(var(--color-green-rgb), 0.3);
 
-  /* Apple iOS 26.1 Squircle (Continuous Curvature Superellipse) Radii */
-  --radius-squircle-xs: 10px;
-  --radius-squircle-sm: 15px;
-  --radius-squircle-md: 22px;
-  --radius-squircle-lg: 30px;
-  --radius-squircle-xl: 38px;
+  /* Apple iOS Continuous Curvature Squircle (Superellipse) Radii */
+  --radius-squircle-xs: 12px;
+  --radius-squircle-sm: 18px;
+  --radius-squircle-md: 26px;
+  --radius-squircle-lg: 34px;
+  --radius-squircle-xl: 44px;
   --radius-squircle-pill: 9999px;
 
   /* Standard Radii mapped to Apple Squircles */
@@ -78,48 +78,52 @@
   --transition-base: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* iOS 26.1 Transparent Liquid Glass Surfaces (Obsidian Dark) */
+  /* Apple iOS Liquid Glass Surfaces (Shader rb1 Volumetric Light + Obsidian Depth) */
   --glass-bg-ultra-thin: rgba(255, 255, 255, 0.025);
   --glass-bg-thin: rgba(6, 10, 18, 0.45);
   --glass-bg-base: rgba(4, 7, 14, 0.62);
   --glass-bg-elevated: rgba(6, 10, 18, 0.78);
-  --glass-bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(10, 15, 26, 0.45) 32%, rgba(4, 7, 14, 0.55) 100%);
-  --glass-bg-card-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(15, 22, 38, 0.60) 32%, rgba(6, 10, 20, 0.70) 100%);
-  --glass-bg-pill: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%);
-  --glass-bg-floating: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(6, 10, 18, 0.65) 100%);
+  --glass-bg-card: linear-gradient(180deg, rgba(255, 255, 255, 0.075) 0%, rgba(12, 17, 28, 0.58) 26%, rgba(5, 8, 16, 0.78) 100%);
+  --glass-bg-card-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 0%, rgba(16, 24, 40, 0.70) 26%, rgba(7, 11, 22, 0.88) 100%);
+  --glass-bg-pill: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+  --glass-bg-floating: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(8, 12, 22, 0.82) 100%);
+  --glass-lens-specular: radial-gradient(130% 90% at 50% 0%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 42%, transparent 70%);
 
-  /* iOS 26.1 Liquid Specular Borders & Prismatic Edges */
+  /* Apple iOS Razor Specular Rim Borders (Shader rb2 Razor Bevel) */
   --glass-border-specular: 1px solid rgba(255, 255, 255, 0.18);
-  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.09);
-  --glass-border-hover: 1px solid rgba(255, 255, 255, 0.32);
+  --glass-border-subtle: 1px solid rgba(255, 255, 255, 0.10);
+  --glass-border-hover: 1px solid rgba(255, 255, 255, 0.35);
   --glass-border-glow-emerald: 1px solid rgba(0, 208, 108, 0.55);
   --glass-border-glow-purple: 1px solid rgba(121, 64, 236, 0.55);
 
-  /* iOS 26.1 Optical Liquid Filters (Deep Blur + Saturation + Brightness Amplification) */
+  /* Apple iOS Optical Liquid Filters (Deep Blur + Saturation + Brightness Amplification) */
   --glass-blur-sm: blur(14px) saturate(190%) brightness(106%);
-  --glass-blur-md: blur(26px) saturate(210%) brightness(108%);
-  --glass-blur-lg: blur(38px) saturate(230%) brightness(112%);
+  --glass-blur-md: blur(24px) saturate(200%) brightness(108%);
+  --glass-blur-lg: blur(36px) saturate(220%) brightness(110%);
 
-  /* iOS 26.1 Liquid Specular Bevels & Ambient Caustics */
+  /* Apple iOS Liquid Specular Bevels & Depth (Shader rb1 + rb2 + rb3) */
   --glass-shadow-surface: 
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.28),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.40),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35),
     inset 0 0 24px 0 rgba(255, 255, 255, 0.02),
-    0 20px 48px -12px rgba(0, 0, 0, 0.65);
+    0 18px 44px -10px rgba(0, 0, 0, 0.72);
 
   --glass-shadow-hover: 
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.42),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 28px 0 rgba(0, 208, 108, 0.12),
-    0 28px 56px -12px rgba(0, 0, 0, 0.72),
-    0 0 30px rgba(0, 208, 108, 0.22);
+    inset 0 2px 1.5px 0 rgba(255, 255, 255, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.45),
+    inset 0 0 32px 0 rgba(0, 208, 108, 0.15),
+    0 26px 56px -10px rgba(0, 0, 0, 0.80),
+    0 0 32px rgba(0, 208, 108, 0.28);
 
   --glass-shadow-floating: 
-    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45),
-    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35),
-    inset 0 0 16px 0 rgba(255, 255, 255, 0.06),
-    0 16px 36px -4px rgba(0, 0, 0, 0.6),
-    0 0 22px rgba(0, 208, 108, 0.28);
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.40),
+    inset 0 0 16px 0 rgba(255, 255, 255, 0.05),
+    0 20px 40px -6px rgba(0, 0, 0, 0.70),
+    0 0 26px rgba(0, 208, 108, 0.25);
 
   /* Layout */
   --container-max-width: 1240px;

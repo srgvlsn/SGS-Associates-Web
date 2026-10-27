@@ -64,6 +64,7 @@ const SGS_COMPONENTS = {
     const isActive = (page) => activePage === page ? 'active' : '';
     const isServicesActive = activePage === 'services' || activePage === 'due-dates' || activePage === 'tools' ? 'active' : '';
     const isFirmActive = activePage === 'about' || activePage === 'careers' ? 'active' : '';
+    const isSubpageActive = (subpage) => activePage === subpage ? 'active' : '';
 
     return `
       <header class="header" role="banner">
@@ -74,7 +75,7 @@ const SGS_COMPONENTS = {
 
           <!-- Desktop Navigation Menu with Clean Dropdowns -->
           <nav class="nav-menu" aria-label="Main Navigation">
-            <a href="${root}" class="nav-link ${isActive('home')}">Home</a>
+            <a href="${root}" class="nav-link ${isActive('home')}"><span>Home</span></a>
 
             <!-- Services Dropdown (Stacked with Services, Due Dates & Financial Tools) -->
             <div class="nav-dropdown">
@@ -83,7 +84,7 @@ const SGS_COMPONENTS = {
                 <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
               </a>
               <div class="nav-dropdown-menu">
-                <a href="${root}services-page/" class="dropdown-item">
+                <a href="${root}services-page/" class="dropdown-item ${isSubpageActive('services')}">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg>
                   </div>
@@ -92,7 +93,7 @@ const SGS_COMPONENTS = {
                     <span>MCA, GST, Audits, PF &amp; Appeals</span>
                   </div>
                 </a>
-                <a href="${root}services-page/due-dates/" class="dropdown-item">
+                <a href="${root}services-page/due-dates/" class="dropdown-item ${isSubpageActive('due-dates')}">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                   </div>
@@ -101,7 +102,7 @@ const SGS_COMPONENTS = {
                     <span>Live Countdown &amp; Tax Deadlines</span>
                   </div>
                 </a>
-                <a href="${root}services-page/financial-tools/" class="dropdown-item">
+                <a href="${root}services-page/financial-tools/" class="dropdown-item ${isSubpageActive('tools')}">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/></svg>
                   </div>
@@ -113,8 +114,8 @@ const SGS_COMPONENTS = {
               </div>
             </div>
 
-            <!-- Clients Top-Level Link -->
-            <a href="${root}clients/" class="nav-link ${isActive('clients')}">Clients</a>
+            <!-- Clientele Top-Level Link -->
+            <a href="${root}clients/" class="nav-link ${isActive('clients')}"><span>Clientele</span></a>
 
             <!-- Firm Dropdown (Non-Clickable Heading on Navbar, Pops up About Us & Careers) -->
             <div class="nav-dropdown">
@@ -123,7 +124,7 @@ const SGS_COMPONENTS = {
                 <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="nav-dropdown-menu">
-                <a href="${root}firm/about/" class="dropdown-item">
+                <a href="${root}firm/about/" class="dropdown-item ${isSubpageActive('about')}">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
                   </div>
@@ -132,7 +133,7 @@ const SGS_COMPONENTS = {
                     <span>Firm Profile &amp; Over 15 Years of Practice</span>
                   </div>
                 </a>
-                <a href="${root}firm/careers/" class="dropdown-item">
+                <a href="${root}firm/careers/" class="dropdown-item ${isSubpageActive('careers')}">
                   <div class="dd-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                   </div>
@@ -144,7 +145,7 @@ const SGS_COMPONENTS = {
               </div>
             </div>
 
-            <a href="${root}contact/" class="nav-link ${isActive('contact')}">Contact &amp; Branches</a>
+            <a href="${root}contact/" class="nav-link ${isActive('contact')}"><span>Contact &amp; Branches</span></a>
           </nav>
 
           <!-- Action Button & Mobile Toggle -->
@@ -191,7 +192,7 @@ const SGS_COMPONENTS = {
           <a href="${root}services-page/" class="mobile-drawer-link ${isActive('services')}">Services (18+ Areas)</a>
           <a href="${root}services-page/due-dates/" class="mobile-drawer-link ${isActive('due-dates')}">Statutory Due Dates &amp; Calendar</a>
           <a href="${root}services-page/financial-tools/" class="mobile-drawer-link ${isActive('tools')}">Financial Tools &amp; Calculators</a>
-          <a href="${root}clients/" class="mobile-drawer-link ${isActive('clients')}">Clients &amp; Success Stories</a>
+          <a href="${root}clients/" class="mobile-drawer-link ${isActive('clients')}">Clientele</a>
           <a href="${root}firm/about/" class="mobile-drawer-link ${isActive('about')}">About Us</a>
           <a href="${root}firm/careers/" class="mobile-drawer-link ${isActive('careers')}">Careers &amp; Traineeship <span class="nav-badge-hiring" style="margin-left: 6px;">Hiring</span></a>
           <a href="${root}contact/" class="mobile-drawer-link ${isActive('contact')}">Contact &amp; Branches</a>
@@ -444,7 +445,7 @@ const SGS_COMPONENTS = {
                 <li><a href="${root}services-page/">All 18+ Services</a></li>
                 <li><a href="${root}services-page/due-dates/">Compliance Due Dates</a></li>
                 <li><a href="${root}services-page/financial-tools/">Financial Tools &amp; Calculators</a></li>
-                <li><a href="${root}clients/">Clients &amp; Case Studies</a></li>
+                <li><a href="${root}clients/">Clientele</a></li>
                 <li><a href="${root}firm/about/">About Firm &amp; Pillars</a></li>
                 <li><a href="${root}firm/careers/">Careers &amp; Articleship</a></li>
                 <li><a href="${root}contact/">Contact &amp; Branches</a></li>
@@ -519,6 +520,82 @@ const SGS_COMPONENTS = {
         </button>
       </div>
     `;
+  },
+
+  /**
+   * Re-hydrates pre-footer consultation section if container placeholder exists
+   */
+  initContact() {
+    const contactContainer = document.getElementById('global-contact-placeholder');
+    if (contactContainer) {
+      contactContainer.outerHTML = this.getGlobalContactSectionHTML();
+    }
+  },
+
+  /**
+   * Updates active navigation state, indicators, and brand logo links without destroying header DOM
+   * @param {string} activePage
+   * @param {string} root
+   */
+  updateActiveNav(activePage = 'home', root = '') {
+    const isServicesActive = activePage === 'services' || activePage === 'due-dates' || activePage === 'tools';
+    const isFirmActive = activePage === 'about' || activePage === 'careers';
+
+    // 1. Desktop Nav Links
+    const topLinks = document.querySelectorAll('.nav-menu .nav-link');
+    topLinks.forEach(link => {
+      const span = link.querySelector('span');
+      const text = (span ? span.textContent : link.textContent).trim().toLowerCase();
+      link.classList.remove('active');
+
+      if (text === 'home' && activePage === 'home') link.classList.add('active');
+      if (text === 'services' && isServicesActive) link.classList.add('active');
+      if (text === 'clientele' && activePage === 'clients') link.classList.add('active');
+      if (text === 'firm' && isFirmActive) link.classList.add('active');
+      if (text.includes('contact') && activePage === 'contact') link.classList.add('active');
+    });
+
+    // 2. Dropdown Items
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+      item.classList.remove('active');
+      const href = item.getAttribute('href') || '';
+      if (activePage === 'services' && href.endsWith('services-page/')) item.classList.add('active');
+      if (activePage === 'due-dates' && href.includes('due-dates')) item.classList.add('active');
+      if (activePage === 'tools' && href.includes('financial-tools')) item.classList.add('active');
+      if (activePage === 'about' && href.includes('about')) item.classList.add('active');
+      if (activePage === 'careers' && href.includes('careers')) item.classList.add('active');
+    });
+
+    // 3. Mobile Drawer Links
+    const drawerLinks = document.querySelectorAll('.mobile-drawer-link');
+    drawerLinks.forEach(link => {
+      link.classList.remove('active');
+      const text = link.textContent.trim().toLowerCase();
+      if (text.startsWith('home') && activePage === 'home') link.classList.add('active');
+      if (text.startsWith('services') && activePage === 'services') link.classList.add('active');
+      if (text.includes('due dates') && activePage === 'due-dates') link.classList.add('active');
+      if (text.includes('financial tools') && activePage === 'tools') link.classList.add('active');
+      if (text.startsWith('clientele') && activePage === 'clients') link.classList.add('active');
+      if (text.startsWith('about') && activePage === 'about') link.classList.add('active');
+      if (text.startsWith('careers') && activePage === 'careers') link.classList.add('active');
+      if (text.includes('contact') && activePage === 'contact') link.classList.add('active');
+    });
+
+    // 4. Update Header and Drawer Brand Logo & Relative Hrefs
+    const brandLogo = document.querySelector('.header .brand-logo');
+    if (brandLogo) {
+      brandLogo.setAttribute('href', root || './');
+      const logoImg = brandLogo.querySelector('img');
+      if (logoImg) logoImg.setAttribute('src', `${root}assets/icons/LOGO.png`);
+    }
+
+    const drawerLogo = document.querySelector('#mobile-drawer a');
+    if (drawerLogo) {
+      drawerLogo.setAttribute('href', root || './');
+      const dImg = drawerLogo.querySelector('img');
+      if (dImg) dImg.setAttribute('src', `${root}assets/icons/LOGO_favicon.png`);
+    }
   },
 
   /**

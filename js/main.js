@@ -3,6 +3,68 @@
  * High-performance, modular, and dynamic client-side engine.
  */
 
+const SGS_MAIN = {
+  initPage(page) {
+    // Page-specific initializers
+    if (page === 'home') {
+      initHeroParticles();
+      initCounters();
+      initDueCountdown();
+      initCardSpotlight();
+    } else if (page === 'services') {
+      renderServices('all', '');
+      initServiceFilterTabs();
+      initServiceSearch();
+      initCardSpotlight();
+    } else if (page === 'due-dates') {
+      renderCalendar();
+      initDueCountdown();
+      initCardSpotlight();
+    } else if (page === 'tools') {
+      initToolkitTabs();
+      initGstCalculator();
+      initIncomeTaxCalculator();
+      initComplianceQuiz();
+    } else if (page === 'clients') {
+      // initClientStories(); // Commented out for future use
+      initCardSpotlight();
+    } else if (page === 'about') {
+      initCardSpotlight();
+    } else if (page === 'careers') {
+      initCareerModal();
+      initCardSpotlight();
+    } else if (page === 'contact') {
+      renderBranches();
+      initCardSpotlight();
+    }
+
+    // Always re-bind contact form if present on page
+    initContactForm();
+
+    // Pre-fill service from URL if provided (e.g. ?service=GST+Registration)
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam && typeof window.selectServiceForInquiry === 'function') {
+      setTimeout(() => {
+        window.selectServiceForInquiry(serviceParam);
+      }, 300);
+    }
+  },
+
+  cleanupPage(page) {
+    if (page === 'home' && window._heroParticlesAnimId) {
+      cancelAnimationFrame(window._heroParticlesAnimId);
+      window._heroParticlesAnimId = null;
+    }
+    if (window._dueCountdownInterval) {
+      clearInterval(window._dueCountdownInterval);
+      window._dueCountdownInterval = null;
+    }
+  }
+};
+
+window.SGS_MAIN = SGS_MAIN;
+
 document.addEventListener('DOMContentLoaded', () => {
   // Determine current page from body dataset or path
   const page = document.body.dataset.page || (function() {
@@ -25,50 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Common initializers for all pages
   initHeader();
   initMobileDrawer();
-  initContactForm();
   initFloatingActions();
 
-  // Page-specific initializers
-  if (page === 'home') {
-    initHeroParticles();
-    initCounters();
-    initDueCountdown();
-    initCardSpotlight();
-  } else if (page === 'services') {
-    renderServices('all', '');
-    initServiceFilterTabs();
-    initServiceSearch();
-    initCardSpotlight();
-  } else if (page === 'due-dates') {
-    renderCalendar();
-    initDueCountdown();
-    initCardSpotlight();
-  } else if (page === 'tools') {
-    initToolkitTabs();
-    initGstCalculator();
-    initIncomeTaxCalculator();
-    initComplianceQuiz();
-  } else if (page === 'clients') {
-    initClientStories();
-    initCardSpotlight();
-  } else if (page === 'about') {
-    initCardSpotlight();
-  } else if (page === 'careers') {
-    initCareerModal();
-    initCardSpotlight();
-  } else if (page === 'contact') {
-    renderBranches();
-    initCardSpotlight();
-  }
-
-  // Pre-fill service from URL if provided (e.g. ?service=GST+Registration)
-  const urlParams = new URLSearchParams(window.location.search);
-  const serviceParam = urlParams.get('service');
-  if (serviceParam && typeof window.selectServiceForInquiry === 'function') {
-    setTimeout(() => {
-      window.selectServiceForInquiry(serviceParam);
-    }, 300);
-  }
+  // Run initial page modules
+  SGS_MAIN.initPage(page);
 });
 
 /* ==========================================================================
@@ -120,26 +142,26 @@ function initHeroParticles() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const parent = canvas.parentElement;
+  if (!parent) return;
+
   let animationFrameId;
   let width, height;
   let particles = [];
   const mouse = { x: null, y: null, radius: 140 };
 
   const colors = [
-    'rgba(0, 208, 108, 0.7)',   // Green
-    'rgba(121, 64, 236, 0.7)',  // Purple
-    'rgba(46, 226, 142, 0.5)',  // Light green
-    'rgba(151, 100, 255, 0.5)'  // Light purple
+    'rgba(0, 208, 108, 0.75)',   // Brand Green
+    'rgba(121, 64, 236, 0.75)',  // Brand Purple
+    'rgba(46, 226, 142, 0.55)',  // Light Emerald
+    'rgba(151, 100, 255, 0.55)'  // Light Violet
   ];
 
   function resize() {
-    const parent = canvas.parentElement;
     width = canvas.width = parent.offsetWidth;
     height = canvas.height = parent.offsetHeight;
-    createParticles();
-  }
-
-  function createParticles() {
     particles = [];
     const count = Math.min(Math.floor((width * height) / 16000), 55);
     for (let i = 0; i < count; i++) {
@@ -178,7 +200,6 @@ function initHeroParticles() {
 
     // Draw and update particles
     particles.forEach(p => {
-      // Mouse interaction
       if (mouse.x !== null && mouse.y !== null) {
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
@@ -204,7 +225,7 @@ function initHeroParticles() {
       ctx.fill();
     });
 
-    animationFrameId = requestAnimationFrame(draw);
+    window._heroParticlesAnimId = requestAnimationFrame(draw);
   }
 
   const heroSection = canvas.closest('.hero-section');
@@ -221,7 +242,11 @@ function initHeroParticles() {
     });
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
+  if (window._heroParticlesAnimId) {
+    cancelAnimationFrame(window._heroParticlesAnimId);
+    window._heroParticlesAnimId = null;
+  }
   resize();
   draw();
 }
@@ -333,7 +358,7 @@ function renderServices(selectedCategory = 'all', searchQuery = '') {
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: var(--bg-dark-card); border-radius: var(--radius-md); border: 1px dashed var(--bg-dark-border);">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 48px 24px; background: var(--glass-lens-specular), var(--glass-bg-card); border-radius: var(--radius-lg); border: 1px dashed rgba(255, 255, 255, 0.2); backdrop-filter: var(--glass-blur-md); -webkit-backdrop-filter: var(--glass-blur-md); box-shadow: var(--glass-shadow-surface);">
         <p style="font-size: 1.1rem; color: #FFFFFF; font-weight: 600; margin-bottom: 8px;">No specific services matched "${searchQuery}"</p>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">Try searching for "GST", "Audit", "Pvt Ltd", "PF", or "Income Tax", or explore our all-inclusive consultation.</p>
         <button class="btn btn-secondary btn-sm" onclick="clearServiceSearch()">View All 18 Services</button>
@@ -1051,13 +1076,18 @@ function initDueCountdown() {
     titleEl.textContent = `Upcoming: ${defaultDue.title}`;
   }
 
+  if (window._dueCountdownInterval) {
+    clearInterval(window._dueCountdownInterval);
+    window._dueCountdownInterval = null;
+  }
   updateClock();
-  setInterval(updateClock, 1000);
+  window._dueCountdownInterval = setInterval(updateClock, 1000);
 }
 
 /* ==========================================================================
-   7. CLIENT SUCCESS STORIES & CASE STUDIES
+   7. CLIENT SUCCESS STORIES & CASE STUDIES (Commented out for future use)
    ========================================================================== */
+/*
 function initClientStories() {
   const tabsContainer = document.getElementById('stories-nav-tabs');
   const displayContainer = document.getElementById('story-detail-display');
@@ -1114,6 +1144,7 @@ function initClientStories() {
   renderTabs();
   renderActiveStory();
 }
+*/
 
 /* ==========================================================================
    8. CARD SPOTLIGHT MOUSE TRACKING
@@ -1231,6 +1262,9 @@ async function sendToInquiryEndpoint(payload) {
 
 function initContactForm() {
   const form = document.getElementById('consultation-form');
+  if (!form || form.dataset.routerBound) return;
+  form.dataset.routerBound = 'true';
+
   const successCard = document.getElementById('consultation-success-card');
   const submitBtn = document.getElementById('consultation-submit-btn');
   const resetBtn = document.getElementById('consultation-reset-btn');
