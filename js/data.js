@@ -13,8 +13,8 @@ const SGS_DATA = {
     heroHeadline: "Expert Financial Guidance You Can Trust",
     heroSubheadline: "We provide end-to-end accounting, auditing, and statutory compliance services. Our team of qualified Chartered Accountants and Tax Practitioners helps businesses navigate complex regulatory landscapes with ease.",
     established: "Kerala, India",
-    primaryPhone: "+91 9947144568",
-    phones: ["+91 9947144568", "+91 9847365124", "+91 8281027566"],
+    primaryPhone: "+91 99471 44568",
+    phones: ["+91 99471 44568", "+91 98473 65124", "+91 82810 27566"],
     whatsapp: "919947144568",
     email: "tax.sgs@gmail.com",
     inquiryEndpoint: "", // Paste your Google Apps Script Web App URL here to enable Google Sheets & Email dispatch
@@ -263,11 +263,11 @@ const SGS_DATA = {
       id: "north-paravur",
       name: "North Paravur, Ernakulam",
       isHeadOffice: true,
-      address: "2nd Floor, Vyapara Bhavan Complex, Chendamangalam Jn. Main Road, North Paravur",
+      address: "2nd Floor, Vyapara Bhavan Complex, Chendamangalam Jn. Main Road, North Paravur - 683513",
       district: "Ernakulam",
       pincode: "683513",
       landmark: "Chendamangalam Junction Main Road",
-      phones: ["+91 9947144568", "+91 9847365124", "+91 8281027566"],
+      phones: ["+91 99471 44568", "+91 98473 65124", "+91 82810 27566"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Vyapara+Bhavan+Complex+North+Paravur+Kerala+683513"
@@ -276,27 +276,27 @@ const SGS_DATA = {
       id: "kodungallur",
       name: "Kodungallur, Thrissur",
       isHeadOffice: false,
-      address: "Main Commercial Center, Near Town Hall, Kodungallur",
+      address: "XX/32B, 32C, Near Krishna Temple, Chappara, Pullut - 680663",
       district: "Thrissur",
-      pincode: "680664",
-      landmark: "Kodungallur Town Center",
-      phones: ["+91 9947144568", "+91 9847365124"],
+      pincode: "680663",
+      landmark: "Krishna Temple, Chappara, Pullut",
+      phones: ["+91 99471 44568", "+91 98473 65124"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
-      mapQuery: "Kodungallur+Thrissur+Kerala"
+      mapQuery: "Krishna+Temple+Chappara+Pullut+Kodungallur+Kerala+680663"
     },
     {
       id: "cherai",
       name: "Cherai, Ernakulam",
       isHeadOffice: false,
-      address: "Coastal Commercial Plaza, Cherai Beach Road, Cherai",
+      address: "Cherai Tower, Devaswam Nada, Cherai - 683514",
       district: "Ernakulam",
       pincode: "683514",
-      landmark: "Cherai Center",
-      phones: ["+91 9947144568", "+91 8281027566"],
+      landmark: "Devaswam Nada, Cherai",
+      phones: ["+91 99471 44568", "+91 82810 27566"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
-      mapQuery: "Cherai+Ernakulam+Kerala"
+      mapQuery: "Cherai+Tower+Devaswam+Nada+Cherai+Kerala+683514"
     }
     /* Non-physical service regions (served remotely / on-client-site without a dedicated walk-in branch; retained for future physical branch expansion)
     ,
@@ -308,7 +308,7 @@ const SGS_DATA = {
       district: "Ernakulam",
       pincode: "683542",
       landmark: "Near AM Road Junction",
-      phones: ["+91 9947144568", "+91 9847365124"],
+      phones: ["+91 99471 44568", "+91 98473 65124"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Perumbavoor+Ernakulam+Kerala"
@@ -321,7 +321,7 @@ const SGS_DATA = {
       district: "Ernakulam",
       pincode: "682017",
       landmark: "Deshabhimani Junction",
-      phones: ["+91 9947144568", "+91 8281027566"],
+      phones: ["+91 99471 44568", "+91 82810 27566"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Deshabhimani+Road+Kaloor+Kochi+Kerala"
@@ -334,7 +334,7 @@ const SGS_DATA = {
       district: "Idukki",
       pincode: "685561",
       landmark: "Adimali Town Center",
-      phones: ["+91 9947144568", "+91 9847365124"],
+      phones: ["+91 99471 44568", "+91 98473 65124"],
       email: "tax.sgs@gmail.com",
       timing: "Mon - Sat: 9:30 AM - 6:00 PM",
       mapQuery: "Adimali+Idukki+Kerala+685561"
@@ -377,7 +377,7 @@ const SGS_DATA = {
       "PF & ESI Monthly Compliances"
     ],
     applyEmail: "tax.sgs@gmail.com",
-    applyPhones: ["9947144568", "8281027566"]
+    applyPhones: ["+91 99471 44568", "+91 82810 27566"]
   },
 
   complianceCalendar: [

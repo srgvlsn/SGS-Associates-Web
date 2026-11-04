@@ -17,7 +17,7 @@ const SGS_COMPONENTS = {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
-              <span>Helpline: <a href="tel:9947144568">9947144568</a><span class="top-bar-alt-phones"> / <a href="tel:9847365124">9847365124</a> / <a href="tel:8281027566">8281027566</a></span></span>
+              <span>Helpline: <a href="tel:+919947144568">+91 99471 44568</a><span class="top-bar-alt-phones"> / <a href="tel:+919847365124">+91 98473 65124</a> / <a href="tel:+918281027566">+91 82810 27566</a></span></span>
             </div>
             <div class="top-bar-item top-bar-email-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -200,7 +200,7 @@ const SGS_COMPONENTS = {
         <div style="margin-top: auto; padding-top: 24px; border-top: 1px solid var(--bg-dark-border);">
           <a href="#contact" class="btn btn-primary mobile-drawer-link" style="width: 100%; margin-bottom: 12px; text-align: center;">Book Consultation</a>
           <p style="font-size: 0.85rem; color: var(--text-secondary); text-align: center;">
-            Direct Helpline: <a href="tel:9947144568" style="color: var(--color-green); font-weight: 600;">9947144568</a>
+            Direct Helpline: <a href="tel:+919947144568" style="color: var(--color-green); font-weight: 600;">+91 99471 44568</a>
           </p>
         </div>
       </aside>
@@ -236,7 +236,7 @@ const SGS_COMPONENTS = {
                   </div>
                   <div class="method-details">
                     <h5>Direct Helpline</h5>
-                    <a href="tel:9947144568">+91 99471 44568</a> / <a href="tel:9847365124">+91 98473 65124</a> / <a href="tel:8281027566">+91 82810 27566</a>
+                    <a href="tel:+919947144568">+91 99471 44568</a> / <a href="tel:+919847365124">+91 98473 65124</a> / <a href="tel:+918281027566">+91 82810 27566</a>
                   </div>
                 </div>
 
@@ -263,7 +263,7 @@ const SGS_COMPONENTS = {
                   </div>
                   <div class="method-details">
                     <h5>Head Office &amp; Regional Branches</h5>
-                    <p style="color: #fff; font-weight: 600; margin: 0;">Vyapara Bhavan Complex, North Paravur</p>
+                    <p style="color: #fff; font-weight: 600; margin: 0;">Vyapara Bhavan Complex, North Paravur - 683513</p>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Offices in Kodungallur &amp; Cherai | Serving Kaloor, Perumbavoor &amp; Adimali</p>
                   </div>
                 </div>
@@ -469,8 +469,8 @@ const SGS_COMPONENTS = {
             <div>
               <h4 class="footer-heading">Contact Us</h4>
               <ul class="footer-links-list">
-                <li><strong>Head Office:</strong> Vyapara Bhavan Complex, North Paravur</li>
-                <li><strong>Helpline:</strong> <a href="tel:9947144568">9947144568</a> / <a href="tel:9847365124">9847365124</a></li>
+                <li><strong>Head Office:</strong> Vyapara Bhavan Complex, North Paravur - 683513</li>
+                <li><strong>Helpline:</strong> <a href="tel:+919947144568">+91 99471 44568</a> / <a href="tel:+919847365124">+91 98473 65124</a></li>
                 <li><strong>Email:</strong> <a href="mailto:tax.sgs@gmail.com">tax.sgs@gmail.com</a></li>
                 <li><strong>Working Hours:</strong> Mon - Sat: 9:30 AM - 6:00 PM</li>
                 <li><strong>Offices:</strong> North Paravur (HO), Kodungallur, Cherai</li>

@@ -13,7 +13,7 @@
 |---|---|
 | **Head Office** | 2nd Floor, Vyapara Bhavan Complex, Chendamangalam Jn. Main Road, North Paravur – 683513 |
 | **Branches** | Kodungallur · Cherai · Perumbavoor · Deshabhimani, Kaloor (Ernakulam) |
-| **Phone** | 9947144568 / 9847365124 / 8281027566 |
+| **Phone** | +91 99471 44568 / +91 98473 65124 / +91 82810 27566 |
 | **Email** | tax.sgs@gmail.com |
 | **Working Hours** | Mon – Sat: 9:30 AM – 6:00 PM |
 
@@ -151,8 +151,8 @@ npx http-server . -p 8080
 ### Updating Contact Information
 Edit `js/data.js` → `SGS_DATA.firm`:
 ```js
-primaryPhone: "+91 9947144568",
-phones: ["+91 9947144568", "+91 9847365124", "+91 8281027566"],
+primaryPhone: "+91 99471 44568",
+phones: ["+91 99471 44568", "+91 98473 65124", "+91 82810 27566"],
 email: "tax.sgs@gmail.com",
 ```
 

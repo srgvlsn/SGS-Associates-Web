@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.1 - 2026-11-04 (v4.3.1)
+
+- **Phone Number Display Standardization (`+91 XXXXX XXXXX`)**:
+  - Adopted the official Indian telecom & national numbering standard 5-5 split (`+91 XXXXX XXXXX`) across the entire site.
+  - Standardized all primary numbers (`+91 99471 44568`, `+91 98473 65124`, `+91 82810 27566`) across [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js), [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js) (top bar helpline, mobile drawer, pre-footer contact, and footer), and [`firm/careers/index.html`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/firm/careers/index.html).
+  - Maintained clean, space-stripped dialable strings (`href="tel:+91..."`) to ensure seamless one-tap calling on all mobile devices.
+- **Branch Address & Pincode Data Harmonization**:
+  - **Cherai Branch**: Updated official postal address to `Cherai Tower, Devaswam Nada, Cherai - 683514` with targeted landmark and Google Maps navigation query.
+  - **Kodungallur Branch**: Updated official building address to `XX/32B, 32C, Near Krishna Temple, Chappara, Pullut - 680663` (PIN `680663`) with updated landmark and Google Maps query.
+  - **Head Office (North Paravur)**: Added pincode `683513` across the primary address string in [`js/data.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/data.js) and synchronized contact/footer components in [`js/components.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/components.js).
+  - **Streamlined Card Layout**: Removed redundant `Near: ...` secondary subtext from branch cards in [`js/main.js`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/js/main.js), keeping the address presentation crisp and decluttered.
+
 ## 4.3.0 - 2026-10-26 (v4.3.0)
 
 - **Buttery-Smooth Client-Side SPA Navigation & View Transitions Engine**:
