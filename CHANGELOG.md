@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 4.3.2 - 2026-11-04 (v4.3.2)
+
+- **Hero Banner Asset Refresh**:
+  - Replaced the previous elongated banner in [`assets/images/hero-banner.jpg`](file:///c:/zPzeudoDisk/Coding/Stack%20Development/SGSAssociates/assets/images/hero-banner.jpg) with the clean 4:3 high-resolution composition (1448 × 1086), removing the redundant bottom address strip and framing seamlessly inside the homepage hero media card.
+
 ## 4.3.1 - 2026-11-04 (v4.3.1)
 
 - **Phone Number Display Standardization (`+91 XXXXX XXXXX`)**:
